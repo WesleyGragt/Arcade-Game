@@ -1,0 +1,38 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "GXPEngine2023c/GXPEngine/bin/Debug/testing.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "GXPEngine2023c/GXPEngine/bin/Debug/testing.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 472,
+                "y": 386.5
+            }
+        },
+        "GXPEngine2023c/GXPEngine/bin/Debug/testing.tmx#1": {
+            "scaleInDock": 1
+        },
+        "GXPEngine2023c/GXPEngine/bin/Debug/testing.tmx#goodly-2x": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/wesle/Downloads/free-sky-with-clouds-background-pixel-art-set/Clouds/daytime",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "GXPEngine2023c/GXPEngine/bin/Debug/testing.tmx"
+    ],
+    "project": "arcade.tiled-project",
+    "recentFiles": [
+        "GXPEngine2023c/GXPEngine/bin/Debug/testing.tmx"
+    ],
+    "tileset.embedInMap": true
+}
