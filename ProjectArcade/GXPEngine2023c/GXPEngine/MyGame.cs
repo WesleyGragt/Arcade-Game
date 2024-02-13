@@ -1,6 +1,6 @@
 using System;                                   // System contains a lot of default C# libraries 
 using GXPEngine;                                // GXPEngine contains the engine
-using System.Drawing;
+using arcade;
                            // System.Drawing contains drawing tools such as Color definitions
 
 public class MyGame : Game {
