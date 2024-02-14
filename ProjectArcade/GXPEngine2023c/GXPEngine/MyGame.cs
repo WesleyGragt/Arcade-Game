@@ -1,6 +1,6 @@
 using System;                                   // System contains a lot of default C# libraries 
 using GXPEngine;                                // GXPEngine contains the engine
-using Arcade;
+using arcade;
 
 public class MyGame : Game {
 	public MyGame() : base(800, 600, false, false, 800, 600, true)     // Create a window that's 800x600 and NOT fullscreen

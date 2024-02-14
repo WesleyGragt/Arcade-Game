@@ -8,7 +8,7 @@ namespace arcade
         int speed = 10;
         int dirX;
         int dirY;
-        public Bullet(int directX, int directY, float pX, float pY) : base("circle.png", 1, 1)
+        public Bullet(float pX, float pY, int directX, int directY) : base("circle.png", 1, 1)
         {
             height = 20;
             width = 20;

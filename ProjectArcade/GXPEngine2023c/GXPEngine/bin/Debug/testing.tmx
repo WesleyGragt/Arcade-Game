@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="18">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="21">
  <tileset firstgid="1" name="1" tilewidth="32" tileheight="32" tilecount="180" columns="18">
   <image source="../../../../../../../../Users/wesle/Downloads/free-sky-with-clouds-background-pixel-art-set/Clouds/daytime/1.png" width="576" height="324"/>
- </tileset>
- <tileset firstgid="181" name="circle" tilewidth="64" tileheight="64" tilecount="1" columns="1">
-  <image source="pictures/circle.png" width="64" height="64"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="25" height="19">
   <data encoding="csv">
@@ -30,22 +27,21 @@
 </data>
  </layer>
  <objectgroup id="3" name="Object Layer 1">
-  <object id="10" name="Enemy" type="Arcade.Enemy" gid="181" x="352" y="160" width="64" height="64">
+  <object id="18" name="Enemy" type="arcade.Enemy" x="352" y="96" width="64" height="64">
    <properties>
     <property name="dirX" type="int" value="0"/>
     <property name="dirY" type="int" value="1"/>
    </properties>
   </object>
-  <object id="14" x="145" y="-182"/>
-  <object id="16" name="Enemy" type="Arcade.Enemy" gid="181" x="544" y="384" width="64" height="64">
+  <object id="19" name="Enemy" type="arcade.Enemy" x="160" y="320" width="64" height="64">
    <properties>
-    <property name="dirX" type="int" value="-1"/>
+    <property name="dirX" type="int" value="1"/>
     <property name="dirY" type="int" value="0"/>
    </properties>
   </object>
-  <object id="17" name="Enemy" type="Arcade.Enemy" gid="181" x="160" y="384" width="64" height="64">
+  <object id="20" name="Enemy" type="arcade.Enemy" x="544" y="320" width="64" height="64">
    <properties>
-    <property name="dirX" type="int" value="1"/>
+    <property name="dirX" type="int" value="-1"/>
     <property name="dirY" type="int" value="0"/>
    </properties>
   </object>
