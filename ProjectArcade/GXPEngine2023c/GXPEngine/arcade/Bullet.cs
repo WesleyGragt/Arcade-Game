@@ -41,15 +41,15 @@ namespace arcade
 
             if (other is Buttons)
             {
-                if (Input.GetKeyDown(Key.A) && !keyDown && dirX == 1)
+                if (Input.GetKey(Key.A) && !keyDown && dirX == 1 && Input.GetKeyDown(Key.K))
                 {
                     LateDestroy();
                     keyDown = true;
-                } else if (Input.GetKeyDown(Key.W) && !keyDown && dirX == 0)
+                } else if (Input.GetKey(Key.W) && !keyDown && dirX == 0 && Input.GetKeyDown(Key.K))
                 {
                     LateDestroy();
                     keyDown = true;
-                } else if (Input.GetKeyDown(Key.D) && !keyDown && dirX == -1)
+                } else if (Input.GetKey(Key.D) && !keyDown && dirX == -1 && Input.GetKeyDown(Key.K))
                 {
                     LateDestroy();
                     keyDown = true;

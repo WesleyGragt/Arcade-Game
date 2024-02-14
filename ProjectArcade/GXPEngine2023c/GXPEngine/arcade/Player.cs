@@ -13,5 +13,10 @@ namespace arcade
             y = data.Y;
             health = data.GetIntProperty("Health");
         }
+
+        void Update()
+        {
+            Console.WriteLine(health);
+        }
     }
 }
