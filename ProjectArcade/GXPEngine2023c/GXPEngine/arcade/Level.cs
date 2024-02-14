@@ -12,10 +12,7 @@ namespace arcade
             TiledLoader loader = new TiledLoader(level);
             loader.LoadTileLayers();
             loader.autoInstance = true;
-            loader.LoadObjectGroups();
-            Enemy enemy = FindObjectOfType<Enemy>();
-            if (enemy == null) return;
+            loader.LoadObjectGroups(0);
         }
     }
 }
-
