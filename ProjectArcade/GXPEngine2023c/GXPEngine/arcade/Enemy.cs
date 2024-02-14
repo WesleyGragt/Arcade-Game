@@ -1,6 +1,5 @@
 ﻿using arcade;
 using GXPEngine;
-using System;
 using System.Collections.Generic;
 using TiledMapParser;
 
@@ -14,7 +13,7 @@ namespace arcade
         int dirY;
         int lastBullet = 0;
         float shootSpeed = 1f;
-        public Enemy(TiledObject data, string filename) : base(filename, 1, 1)
+        public Enemy(string filename, int c, int r, TiledObject data) : base(filename, 1, 1)
         {
             x = data.X;
             y = data.Y;
@@ -24,12 +23,10 @@ namespace arcade
 
         void Update()
         {
-            Console.WriteLine("Hey");
             if (Time.time >= lastBullet + shootSpeed * 1000)
             {
-                Console.WriteLine("SHOOT");
                 lastBullet += 1000;
-                var b = new Bullet(x, y, dirX, dirY);
+                var b = new Bullet("circle.png", 1, 1, x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
             }

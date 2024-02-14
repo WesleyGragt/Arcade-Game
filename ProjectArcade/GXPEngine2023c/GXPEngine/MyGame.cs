@@ -3,9 +3,9 @@ using GXPEngine;                                // GXPEngine contains the engine
 using arcade;
 
 public class MyGame : Game {
-	public MyGame() : base(800, 600, false, false, 800, 600, true)     // Create a window that's 800x600 and NOT fullscreen
+	public MyGame() : base(1366, 768, false, false, 1366, 768, true)     // Create a window that's 800x600 and NOT fullscreen
 	{
-        EasyDraw canvas = new EasyDraw(800, 600, false);
+        EasyDraw canvas = new EasyDraw(1366, 768, false);
         
 		Level level = new Level();
 
