@@ -5,7 +5,6 @@ using arcade;
 public class MyGame : Game {
     public MyGame() : base(1366, 768, false)     // Create a window that's 800x600 and NOT fullscreen
 	{
-
         Level level = new Level();
 
         AddChild(level);

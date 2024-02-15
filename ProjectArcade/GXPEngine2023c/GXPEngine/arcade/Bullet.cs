@@ -56,7 +56,7 @@ namespace arcade
             {
                 if (_player != null)
                 {
-                    _player.health -= 1;
+                    _player.health--;
                 }
                 LateDestroy();
             }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="40">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="57">
  <tileset firstgid="1" name="1" tilewidth="32" tileheight="32" tilecount="180" columns="18">
   <image source="../../../../../../../../Users/wesle/Downloads/free-sky-with-clouds-background-pixel-art-set/Clouds/daytime/1.png" width="576" height="324"/>
  </tileset>
@@ -8,6 +8,20 @@
  </tileset>
  <tileset firstgid="182" name="colors" tilewidth="32" tileheight="32" tilecount="4" columns="2">
   <image source="pictures/colors.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="186" name="hearts" tilewidth="640" tileheight="64" tilecount="11" columns="1">
+  <image source="../../../../../../../../Users/wesle/Downloads/hearts.png" width="640" height="704"/>
+  <tile id="10"/>
+  <tile id="9"/>
+  <tile id="8"/>
+  <tile id="7"/>
+  <tile id="6"/>
+  <tile id="5"/>
+  <tile id="4"/>
+  <tile id="3"/>
+  <tile id="2"/>
+  <tile id="1"/>
+  <tile id="0"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="43" height="24">
   <data encoding="csv">
@@ -84,12 +98,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="6" name="HUD" class="arcade.Healthbar">
-  <object id="39" name="healthbar" type="arcade.Healthbar" x="32" y="32" width="320" height="64">
-   <properties>
-    <property name="hey" value="1"/>
-   </properties>
-   <text pixelsize="64" wrap="1" valign="center">tyrsdg</text>
-  </object>
+ <objectgroup id="7" name="Health">
+  <object id="56" name="health" type="arcade.Healthbar" gid="186" x="32" y="96" width="640" height="64"/>
  </objectgroup>
 </map>
