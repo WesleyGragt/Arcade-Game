@@ -1,16 +1,18 @@
-﻿using System;
-using GXPEngine;
+﻿using GXPEngine;
 
 namespace arcade
 {
     internal class Bullet : AnimationSprite
     {
         Player _player;
+        Buttons _buttons;
+
         int speed = 6;
         int dirX;
         int dirY;
-        bool keyDown = false;
-
+        bool keyA = false;
+        bool keyW = false;
+        bool keyD = false;
         public Bullet(float pX, float pY, int directX, int directY) : base("pictures/circle.png", 1, 1)
         {
             SetOrigin(width/2, height/2);
@@ -21,12 +23,32 @@ namespace arcade
             x = pX;
             y = pY;
             _player = MyGame.main.FindObjectOfType<Player>();
+            _buttons = MyGame.main.FindObjectOfType<Buttons>();
         }
 
         public void Update()
         { 
             x += speed * dirX;
             y += speed * dirY;
+
+            if (Input.GetKey(Key.A) && !keyW && !keyD)
+            {
+                keyA = true;
+            }
+            else if (Input.GetKey(Key.W) && !keyA && !keyD)
+            {
+                keyW = true;
+            }
+            else if (Input.GetKey(Key.D) && !keyA && !keyW)
+            {
+                keyD = true;
+            }
+            else
+            {
+                keyA = false;
+                keyW = false;
+                keyD = false;
+            }
         }
         void OnCollision(GameObject other)
         {
@@ -41,20 +63,18 @@ namespace arcade
 
             if (other is Buttons)
             {
-                if (Input.GetKey(Key.A) && !keyDown && dirX == 1 && Input.GetKeyDown(Key.K))
+                if (_buttons.keyA && Input.GetKeyDown(Key.K) && dirX == 1)
                 {
                     LateDestroy();
-                    keyDown = true;
-                } else if (Input.GetKey(Key.W) && !keyDown && dirX == 0 && Input.GetKeyDown(Key.K))
-                {
-                    LateDestroy();
-                    keyDown = true;
-                } else if (Input.GetKey(Key.D) && !keyDown && dirX == -1 && Input.GetKeyDown(Key.K))
-                {
-                    LateDestroy();
-                    keyDown = true;
                 }
-                else keyDown = false;
+                if (_buttons.keyW && Input.GetKeyDown(Key.K) && dirX == 0)
+                {
+                    LateDestroy();
+                }
+                if (_buttons.keyD && Input.GetKeyDown(Key.K) && dirX == -1)
+                {
+                    LateDestroy();
+                }
             }
         }
     }

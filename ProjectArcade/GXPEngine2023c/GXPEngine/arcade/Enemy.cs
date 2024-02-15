@@ -1,8 +1,5 @@
-﻿using arcade;
-using GXPEngine;
-using System;
+﻿using GXPEngine;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using TiledMapParser;
 
 namespace arcade

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="38">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="40">
  <tileset firstgid="1" name="1" tilewidth="32" tileheight="32" tilecount="180" columns="18">
   <image source="../../../../../../../../Users/wesle/Downloads/free-sky-with-clouds-background-pixel-art-set/Clouds/daytime/1.png" width="576" height="324"/>
  </tileset>
@@ -82,6 +82,14 @@
    <properties>
     <property name="side" type="int" value="3"/>
    </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="HUD" class="arcade.Healthbar">
+  <object id="39" name="healthbar" type="arcade.Healthbar" x="32" y="32" width="320" height="64">
+   <properties>
+    <property name="hey" value="1"/>
+   </properties>
+   <text pixelsize="64" wrap="1" valign="center">tyrsdg</text>
   </object>
  </objectgroup>
 </map>
