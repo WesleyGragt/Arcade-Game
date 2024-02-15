@@ -11,9 +11,9 @@ namespace arcade
         int dirX;
         int dirY;
 
-        int lastBullet1 = 0;
-        int lastBullet2 = 0;
-        int lastBullet3 = 0;
+        float lastBullet1 = 0;
+        float lastBullet2 = 0;
+        float lastBullet3 = 0;
 
         float shootSpeed = 1f;
         int side;
@@ -34,21 +34,21 @@ namespace arcade
         {
             if (Time.time >= lastBullet1 + shootSpeed * 1000 && side == 1 && shooter1)
             {
-                lastBullet1 += 1000;
+                lastBullet1 += shootSpeed * 1000;
                 var b = new Bullet(x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
             }
             if (Time.time >= lastBullet2 + shootSpeed * 1000 && side == 2 && shooter2)
             {
-                lastBullet2 += 1000;
+                lastBullet2 += shootSpeed * 1000;
                 var b = new Bullet(x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
             }
             if (Time.time >= lastBullet3 + shootSpeed * 1000 && side == 3 && shooter3)
             {
-                lastBullet3 += 1000;
+                lastBullet3 += shootSpeed * 1000;
                 var b = new Bullet(x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
@@ -79,15 +79,15 @@ namespace arcade
             }
             if (!shooter1 && Time.time >= lastBullet1 + shootSpeed * 1000)
             {
-                lastBullet1 += 1000;
+                lastBullet1 += shootSpeed * 1000;
             }
             if (!shooter2 && Time.time >= lastBullet2 + shootSpeed * 1000)
             {
-                lastBullet2 += 1000;
+                lastBullet2 += shootSpeed * 1000;
             }
             if (!shooter3 && Time.time >= lastBullet3 + shootSpeed * 1000)
             {
-                lastBullet3 += 1000;
+                lastBullet3 += shootSpeed * 1000;
             }
         }
 

@@ -59,21 +59,21 @@
   </object>
  </objectgroup>
  <objectgroup id="4" name="Enemies" class="arcade.Enemy">
-  <object id="30" name="Enemy" type="arcade.Enemy" gid="181" x="1184" y="720" width="64" height="64">
+  <object id="30" name="Enemy" type="arcade.Enemy" gid="181" x="1376" y="720" width="64" height="64">
    <properties>
     <property name="dirX" type="int" value="-1"/>
     <property name="dirY" type="int" value="0"/>
     <property name="side" type="int" value="3"/>
    </properties>
   </object>
-  <object id="33" name="Enemy" type="arcade.Enemy" gid="181" x="128" y="720" width="64" height="64">
+  <object id="33" name="Enemy" type="arcade.Enemy" gid="181" x="-64" y="720" width="64" height="64">
    <properties>
     <property name="dirX" type="int" value="1"/>
     <property name="dirY" type="int" value="0"/>
     <property name="side" type="int" value="1"/>
    </properties>
   </object>
-  <object id="34" name="Enemy" type="arcade.Enemy" gid="181" x="656" y="192" width="64" height="64">
+  <object id="34" name="Enemy" type="arcade.Enemy" gid="181" x="656" y="0" width="64" height="64">
    <properties>
     <property name="dirX" type="int" value="0"/>
     <property name="dirY" type="int" value="1"/>
