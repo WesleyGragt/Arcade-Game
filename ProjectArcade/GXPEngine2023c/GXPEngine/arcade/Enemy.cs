@@ -31,14 +31,14 @@ namespace arcade
         }
 
         void Update()
-        {
-            if (Time.time >= lastBullet1 + shootSpeed * 1000 && side == 1 && shooter1)
+        {            
+            /*if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && side == 1)
             {
-                lastBullet1 += shootSpeed * 1000;
+                _conductor.lastbeat += _conductor.crotchet;
                 var b = new Bullet(x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
-            }
+           }*/
             if (Time.time >= lastBullet2 + shootSpeed * 1000 && side == 2 && shooter2)
             {
                 lastBullet2 += shootSpeed * 1000;
