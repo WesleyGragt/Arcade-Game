@@ -31,7 +31,7 @@ namespace arcade
         }
 
         void Update()
-        {            
+        {
             /*if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && side == 1)
             {
                 _conductor.lastbeat += _conductor.crotchet;

@@ -1,4 +1,5 @@
 ﻿using GXPEngine;
+using System.Drawing.Text;
 
 namespace arcade
 {
@@ -26,5 +27,6 @@ namespace arcade
             float elapsedTime = Time.time - startTime;
             songposition = (elapsedTime * pitch) - offset;
         }
+        public float a{ private get; private set; }
     }
 }
