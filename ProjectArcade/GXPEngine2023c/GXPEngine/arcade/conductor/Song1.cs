@@ -1,12 +1,11 @@
 ﻿using GXPEngine;
-using System.Drawing.Text;
 
 namespace arcade
 {
-    internal class Conductor : GameObject
+    public class Song1 : GameObject
     {
         SoundChannel song = new Sound("music/Crystalline.mp3", true, false).Play();
-        
+
         public float bpm = 70;
         public float crotchet;
         public float songposition;
@@ -15,6 +14,7 @@ namespace arcade
         public float lastbeat;
 
         float startTime;
+
         void Start()
         {
             lastbeat = 0f;
@@ -27,6 +27,5 @@ namespace arcade
             float elapsedTime = Time.time - startTime;
             songposition = (elapsedTime * pitch) - offset;
         }
-        public float a{ private get; private set; }
     }
 }

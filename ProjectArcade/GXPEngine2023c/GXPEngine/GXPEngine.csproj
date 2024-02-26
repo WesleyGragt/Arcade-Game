@@ -43,7 +43,8 @@
   <ItemGroup>
     <Compile Include="arcade\Bullet.cs" />
     <Compile Include="arcade\Buttons.cs" />
-    <Compile Include="arcade\Conductor.cs" />
+    <Compile Include="arcade\conductor\Conductor.cs" />
+    <Compile Include="arcade\conductor\Song1.cs" />
     <Compile Include="arcade\Healthbar.cs" />
     <Compile Include="arcade\Enemy.cs" />
     <Compile Include="arcade\Player.cs" />
