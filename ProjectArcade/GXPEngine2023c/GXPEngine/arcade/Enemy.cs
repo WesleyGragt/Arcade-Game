@@ -41,6 +41,8 @@ namespace arcade
             side = data.GetIntProperty("side");
         }
 
+<<<<
+<<< HEAD
         void Start()
         {
             if (_song1 == null)
