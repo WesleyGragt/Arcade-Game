@@ -23,6 +23,14 @@ namespace arcade
         bool shooter1 = false;
         bool shooter2 = false;
         bool shooter3 = false;
+
+        //made new variables for the one in song1
+        float bpm;
+        float crotchet;
+        float songposition;
+        float offset;
+        float pitch;
+        float lastbeat;
         
         public Enemy(string filename, int c, int r, TiledObject data) : base(filename, 1, 1)
         {
@@ -40,13 +48,23 @@ namespace arcade
                 FindObjectOfType<Song1>();
             }
             else return;
+
+
+            // set those variables to the ones from song1
+            bpm = _song1.bpm;
+            crotchet = _song1.crotchet;
+            songposition = _song1.songposition;
+            offset = _song1.offset;
+            pitch = _song1.pitch;
+            lastbeat = _song1.lastbeat;
+            
         }
 
         void Update()
         {
-            if (_song1.songposition > _song1.lastbeat + _song1.crotchet && side == 1)
+            if (songposition > lastbeat + crotchet && side == 1)
             {
-                _song1.lastbeat += _song1.crotchet;
+                lastbeat += crotchet;
                 var b = new Bullet(x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
