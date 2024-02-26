@@ -1,4 +1,5 @@
 ﻿using GXPEngine;
+using System;
 
 namespace arcade
 {
@@ -7,17 +8,15 @@ namespace arcade
         Player _player;
         Buttons _buttons;
 
-        int speed = 6;
+        int speed = 3;
         int dirX;
         int dirY;
-        bool keyA = false;
-        bool keyW = false;
-        bool keyD = false;
-        public Bullet(float pX, float pY, int directX, int directY) : base("pictures/circle.png", 1, 1)
+
+        public Bullet(float pX, float pY, int directX, int directY, string filename) : base(filename, 2, 1)
         {
             SetOrigin(width/2, height/2);
-            height = 20;
-            width = 20;
+            height = 75;
+            width = 75;
             dirX = directX;
             dirY = directY;
             x = pX;
@@ -30,25 +29,8 @@ namespace arcade
         { 
             x += speed * dirX;
             y += speed * dirY;
-
-            if (Input.GetKey(Key.A) && !keyW && !keyD)
-            {
-                keyA = true;
-            }
-            else if (Input.GetKey(Key.W) && !keyA && !keyD)
-            {
-                keyW = true;
-            }
-            else if (Input.GetKey(Key.D) && !keyA && !keyW)
-            {
-                keyD = true;
-            }
-            else
-            {
-                keyA = false;
-                keyW = false;
-                keyD = false;
-            }
+            SetCycle(0, 2);
+            Animate(0.1f);
         }
         void OnCollision(GameObject other)
         {

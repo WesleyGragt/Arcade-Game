@@ -1,14 +1,39 @@
 ﻿
+using System;
+using System.Threading;
 using GXPEngine;
 
 namespace arcade
 {
     public class Conductor : GameObject
     {
-        public Conductor ()
+        public Conductor()
         {
-            Song1 song1 = new Song1();
-            AddChild (song1);
+            SoundChannel song = new Sound("music/drums.wav", true, false).Play();
+        }
+
+        public float bpm = 70;
+        public float crotchet;
+        public float songposition;
+        public float offset = 0.2f;
+        public float pitch = 1.0f;
+        public float lastbeat;
+        int start = 0;
+
+        float startTime;
+
+        public void Update()
+        {
+            Console.WriteLine(crotchet);
+            if (start == 0)
+            {
+                lastbeat = 0f;
+                startTime = Time.time;
+                crotchet = 60 / bpm;
+                start++;
+            }
+            float elapsedTime = Time.time - startTime;
+            songposition = (elapsedTime * pitch) - offset;
         }
     }
 }

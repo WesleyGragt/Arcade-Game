@@ -1,6 +1,7 @@
 ﻿using GXPEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using TiledMapParser;
 
 namespace arcade
@@ -8,30 +9,17 @@ namespace arcade
     public class Enemy : AnimationSprite
     {
         List<Bullet> _bullets = new List<Bullet>();
-        Song1 _song1;
+        Conductor _conductor = MyGame.main.FindObjectOfType<Conductor>();
 
         int dirX;
         int dirY;
 
-        float lastBullet1 = 0;
-        float lastBullet2 = 0;
-        float lastBullet3 = 0;
-
-        float shootSpeed = 1f;
         int side;
-        
-        bool shooter1 = false;
-        bool shooter2 = false;
-        bool shooter3 = false;
 
-        //made new variables for the one in song1
-        float bpm;
-        float crotchet;
-        float songposition;
-        float offset;
-        float pitch;
-        float lastbeat;
-        
+        int randomNumb = Utils.Random(1, 3);
+        string monster;
+
+
         public Enemy(string filename, int c, int r, TiledObject data) : base(filename, 1, 1)
         {
             x = data.X;
@@ -41,87 +29,45 @@ namespace arcade
             side = data.GetIntProperty("side");
         }
 
-<<<<
-<<< HEAD
-        void Start()
-        {
-            if (_song1 == null)
-            {
-                FindObjectOfType<Song1>();
-            }
-            else return;
-
-
-            // set those variables to the ones from song1
-            bpm = _song1.bpm;
-            crotchet = _song1.crotchet;
-            songposition = _song1.songposition;
-            offset = _song1.offset;
-            pitch = _song1.pitch;
-            lastbeat = _song1.lastbeat;
-            
-        }
-
         void Update()
         {
-            if (songposition > lastbeat + crotchet && side == 1)
+            if (_conductor == null)
             {
-                lastbeat += crotchet;
-                var b = new Bullet(x, y, dirX, dirY);
+                _conductor = MyGame.main.FindObjectOfType<Conductor>();
+            }
+            switch (randomNumb)
+            {
+                case 1:
+                    monster = "pictures/enemy1.png";
+                    break;
+                case 2:
+                    monster = "pictures/enemy2.png";
+                    break;
+            }
+            if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && side == 1)
+            {
+                _conductor.lastbeat += _conductor.crotchet * 1000;
+                var b = new Bullet(x, y, dirX, dirY, monster);
                 parent.AddChild(b);
                 _bullets.Add(b);
+                randomNumb = Utils.Random(1, 3);
             }
-            if (Time.time >= lastBullet2 + shootSpeed * 1000 && side == 2 && shooter2)
+            if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && side == 2)
             {
-                lastBullet2 += shootSpeed * 1000;
-                var b = new Bullet(x, y, dirX, dirY);
+                _conductor.lastbeat += _conductor.crotchet * 1000;
+                var b = new Bullet(x, y, dirX, dirY, monster);
                 parent.AddChild(b);
                 _bullets.Add(b);
+                randomNumb = Utils.Random(1, 3);
             }
-            if (Time.time >= lastBullet3 + shootSpeed * 1000 && side == 3 && shooter3)
+            if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && side == 3)
             {
-                lastBullet3 += shootSpeed * 1000;
-                var b = new Bullet(x, y, dirX, dirY);
+                _conductor.lastbeat += _conductor.crotchet * 1000;
+                var b = new Bullet(x, y, dirX, dirY, monster);
                 parent.AddChild(b);
                 _bullets.Add(b);
-            }
-
-            if (Input.GetKeyDown(Key.NUMPAD_1))
-            {
-                shooter1 = true;
-            } else if (Input.GetKeyDown(Key.NUMPAD_4))
-            {
-                shooter1 = false;
-            }
-            if (Input.GetKeyDown(Key.NUMPAD_2))
-            {
-                shooter2 = true;
-            }
-            else if (Input.GetKeyDown(Key.NUMPAD_5))
-            {
-                shooter2 = false;
-            }
-            if (Input.GetKeyDown(Key.NUMPAD_3))
-            {
-                shooter3 = true;
-            }
-            else if (Input.GetKeyDown(Key.NUMPAD_6))
-            {
-                shooter3 = false;
-            }
-            if (!shooter1 && Time.time >= lastBullet1 + shootSpeed * 1000)
-            {
-                lastBullet1 += shootSpeed * 1000;
-            }
-            if (!shooter2 && Time.time >= lastBullet2 + shootSpeed * 1000)
-            {
-                lastBullet2 += shootSpeed * 1000;
-            }
-            if (!shooter3 && Time.time >= lastBullet3 + shootSpeed * 1000)
-            {
-                lastBullet3 += shootSpeed * 1000;
+                randomNumb = Utils.Random(1, 3);
             }
         }
-
     }
 }
