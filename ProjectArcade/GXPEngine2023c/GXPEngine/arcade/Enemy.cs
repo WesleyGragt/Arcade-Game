@@ -33,24 +33,15 @@ namespace arcade
             side = data.GetIntProperty("side");
         }
 
-        void Start()
-        {
-            if (_song1 == null)
-            {
-                FindObjectOfType<Song1>();
-            }
-            else return;
-        }
-
         void Update()
         {
-            if (_song1.songposition > _song1.lastbeat + _song1.crotchet && side == 1)
+            /*if (_song1.songposition > _song1.lastbeat + _song1.crotchet && side == 1)
             {
                 _song1.lastbeat += _song1.crotchet;
                 var b = new Bullet(x, y, dirX, dirY);
                 parent.AddChild(b);
                 _bullets.Add(b);
-            }
+            }*/
             if (Time.time >= lastBullet2 + shootSpeed * 1000 && side == 2 && shooter2)
             {
                 lastBullet2 += shootSpeed * 1000;
