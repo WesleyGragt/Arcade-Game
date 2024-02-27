@@ -9,7 +9,7 @@ namespace arcade
         public bool keyA = false;
         public bool keyW = false;
         public bool keyD = false;
-        public Buttons(string filename, int c, int r, TiledObject data) : base(filename, 2, 2, -1, false, true)
+        public Buttons(string filename, int c, int r, TiledObject data) : base(filename, 2, 1, -1, false, true)
         {
             side = data.GetIntProperty("side");
         }
@@ -43,7 +43,7 @@ namespace arcade
 
             if (keyA && !keyW && !keyD && side == 1)
             {
-                SetCycle(3);
+                SetCycle(1);
             }
             else if (!keyA && side == 1)
             {
@@ -52,20 +52,20 @@ namespace arcade
 
             if (keyW && !keyA && !keyD && side == 2)
             {
-                SetCycle(3);
+                SetCycle(1);
             }
             else if (!keyW && side == 2)
             {
-                SetCycle(1);
+                SetCycle(0);
             }
 
             if (keyD && !keyA && !keyW && side == 3)
             {
-                SetCycle(3);
+                SetCycle(1);
             }
             else if (!keyD && side == 3)
             {
-                SetCycle(2);
+                SetCycle(0);
             }
         }
     }

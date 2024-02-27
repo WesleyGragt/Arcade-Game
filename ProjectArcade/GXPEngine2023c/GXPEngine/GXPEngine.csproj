@@ -41,13 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="arcade\Bullet.cs" />
+    <Compile Include="arcade\Enemy\Bullet.cs" />
     <Compile Include="arcade\Buttons.cs" />
+    <Compile Include="arcade\Enemy\EnemyHandler.cs" />
     <Compile Include="arcade\conductor\Conductor.cs" />
-    <Compile Include="arcade\conductor\Song1.cs" />
-    <Compile Include="arcade\Healthbar.cs" />
-    <Compile Include="arcade\Enemy.cs" />
-    <Compile Include="arcade\Player.cs" />
+    <Compile Include="arcade\Player\Healthbar.cs" />
+    <Compile Include="arcade\Enemy\Enemy.cs" />
+    <Compile Include="arcade\Player\Smoke.cs" />
+    <Compile Include="arcade\Player\Player.cs" />
     <Compile Include="arcade\Level.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />

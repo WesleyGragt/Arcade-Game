@@ -12,6 +12,9 @@ namespace arcade
             loader.LoadTileLayers();
             loader.autoInstance = true;
             loader.LoadObjectGroups();
+
+            EnemyHandler enemyHandler = new EnemyHandler();
+            AddChild(enemyHandler);
         }
     }
 }

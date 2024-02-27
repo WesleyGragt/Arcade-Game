@@ -1,0 +1,89 @@
+﻿using GXPEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using TiledMapParser;
+
+namespace arcade
+{
+    public class Enemy : AnimationSprite
+    {
+        List<Bullet> _bullets = new List<Bullet>();
+        Conductor _conductor = MyGame.main.FindObjectOfType<Conductor>();
+        EnemyHandler _handler = MyGame.main.FindObjectOfType<EnemyHandler>();
+
+        int dirX;
+        int dirY;
+
+        int side;
+
+        int randomNumb = Utils.Random(1, 3);
+        string monster;
+        int monsterCount = 2;
+
+        int spawner = 1000;
+
+
+        public Enemy(string filename, int c, int r, TiledObject data) : base(filename, 1, 1)
+        {
+            SetOrigin(width/2, height/2);
+            x = data.X;
+            y = data.Y;
+            dirX = data.GetIntProperty("dirX");
+            dirY = data.GetIntProperty("dirY");
+            side = data.GetIntProperty("side");
+            visible = false;
+        }
+
+        void Update()
+        {
+            if (_conductor == null)
+            {
+                _conductor = MyGame.main.FindObjectOfType<Conductor>();
+            }
+            if (_handler == null)
+            {
+                _handler = MyGame.main.FindObjectOfType<EnemyHandler>();
+            }
+
+            switch (randomNumb)
+            {
+                case 1:
+                    monster = "pictures/enemy1.png";
+                    break;
+                case 2:
+                    monster = "pictures/enemy2.png";
+                    break;
+            }
+
+            if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet)
+            {
+                if (_handler.randomNumb == 1 && side == 1)
+                {
+                    _conductor.lastbeat += _conductor.crotchet * spawner;
+                    var b = new Bullet(x, y, dirX, dirY, monster);
+                    parent.AddChild(b);
+                    _bullets.Add(b);
+                    randomNumb = Utils.Random(1, monsterCount + 1);
+                    _handler.randomNumb = Utils.Random(1, 4);
+                } else if (_handler.randomNumb == 2 && side == 2)
+                {
+                    _conductor.lastbeat += _conductor.crotchet * spawner;
+                    var b = new Bullet(x, y, dirX, dirY, monster);
+                    parent.AddChild(b);
+                    _bullets.Add(b);
+                    randomNumb = Utils.Random(1, monsterCount + 1);
+                    _handler.randomNumb = Utils.Random(1, 4);
+                } else if (_handler.randomNumb == 3 && side == 3)
+                {
+                    _conductor.lastbeat += _conductor.crotchet * spawner;
+                    var b = new Bullet(x, y, dirX, dirY, monster);
+                    parent.AddChild(b);
+                    _bullets.Add(b);
+                    randomNumb = Utils.Random(1, monsterCount + 1);
+                    _handler.randomNumb = Utils.Random(1, 4);
+                }
+            }
+        }
+    }
+}

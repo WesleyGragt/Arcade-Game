@@ -1,12 +1,11 @@
-﻿
-using System;
-using System.Threading;
-using GXPEngine;
+﻿using GXPEngine;
 
 namespace arcade
 {
     public class Conductor : GameObject
     {
+        //music/Crystalline.mp3
+        //music/drums.wav
         public Conductor()
         {
             SoundChannel song = new Sound("music/drums.wav", true, false).Play();
@@ -24,7 +23,6 @@ namespace arcade
 
         public void Update()
         {
-            Console.WriteLine(crotchet);
             if (start == 0)
             {
                 lastbeat = 0f;

@@ -9,7 +9,7 @@ namespace arcade
         Buttons _button;
         public int health;
         float speed;
-        public Player(string filename, int c, int r, TiledObject data) : base(filename, 4, 8)
+        public Player(string filename, int c, int r, TiledObject data) : base(filename, 4, 11)
         {
             x = data.X;
             y = data.Y;
@@ -27,11 +27,15 @@ namespace arcade
             {
                 SetCycle(16, 31);
             }
+            if (_button.keyW && Input.GetKeyDown(Key.K))
+            {
+                SetCycle(32, 43);
+            }
             if (_button.keyD && Input.GetKeyDown(Key.K))
             {
-                SetCycle(0, 16);
+                SetCycle(0, 15);
             }
-            if (currentFrame == 15 || currentFrame == 30)
+            if (currentFrame == 14 || currentFrame == 30 || currentFrame == 42)
             {
                 SetCycle(0);
             }
