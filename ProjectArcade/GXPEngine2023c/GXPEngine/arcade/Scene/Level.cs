@@ -15,6 +15,9 @@ namespace arcade
 
             EnemyHandler enemyHandler = new EnemyHandler();
             AddChild(enemyHandler);
+
+            scoreBoard _scoring = new scoreBoard();
+            AddChild(_scoring);
         }
     }
 }

@@ -8,11 +8,11 @@ namespace arcade
     public class SceneHandler : GameObject
     {
         bool hasGameStarted = false;
-        bool hasGameEnded = false;
+        //bool hasGameEnded = false;
         bool startScreen = false;
         StartScreen sScreen;
-        Level level;
-        Conductor conductor;
+        Level level = MyGame.main.FindObjectOfType<Level>();
+        Conductor conductor = MyGame.main.FindObjectOfType<Conductor>();
         EndScreen eScreen;
 
         public SceneHandler()
@@ -22,6 +22,9 @@ namespace arcade
 
         void Update()
         {
+            if (level == null) level = MyGame.main.FindObjectOfType<Level>();
+            if (conductor == null) conductor = MyGame.main.FindObjectOfType<Conductor>();
+
             if (!startScreen)
             {
                 sScreen = new StartScreen();
@@ -63,14 +66,13 @@ namespace arcade
             AddChild(conductor);
         }
 
-        /*void endGame()
+        public void endGame()
         {
-            if (level != null *//*&& conductor != null*//*)
+            List<GameObject> children = new List<GameObject>();
+            children = game.GetChildren();
+            foreach (GameObject child in children)
             {
-                level.LateDestroy(); // Destroy level
-                level = null; // set screen reference to null
-                *//*conductor.LateDestroy();
-                conductor = null;*//*
+                child.Destroy();
             }
 
             // load and add the end screen
@@ -78,7 +80,7 @@ namespace arcade
             AddChild(eScreen);
         }
 
-        void DestroyAll()
+        /*void DestroyAll()
         {
             List<GameObject> children= new List<GameObject>();
             children = game.GetChildren();

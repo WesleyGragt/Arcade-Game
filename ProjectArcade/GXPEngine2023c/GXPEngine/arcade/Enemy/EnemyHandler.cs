@@ -10,6 +10,6 @@ namespace arcade
 {
     public class EnemyHandler : GameObject
     {
-        public int randomNumb = Utils.Random(1, 4);
+        public int randomNumb = Utils.Random(1, 3); //turn from 1,3 to 1,4
     }
 }

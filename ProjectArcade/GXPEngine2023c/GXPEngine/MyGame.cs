@@ -5,20 +5,9 @@ using arcade;
 public class MyGame : Game {
     public MyGame() : base(1334, 768, false)     // Create a window that's 800x600 and NOT fullscreen
 	{
-<<<<<<< Updated upstream
 		SceneHandler sceneHandler = new SceneHandler();	
 		AddChild(sceneHandler);
        
-=======
-        Level level = new Level();
-		Conductor conductor = new Conductor();
-        scoreBoard vfx = new scoreBoard();
-
-        AddChild(level);
-		AddChild(conductor);
-		AddChild(vfx);
-
->>>>>>> Stashed changes
         Console.WriteLine("My game initialized");
 	}
 

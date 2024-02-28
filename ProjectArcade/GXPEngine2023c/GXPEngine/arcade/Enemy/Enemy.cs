@@ -49,7 +49,7 @@ namespace arcade
                     break;
                 case 2:
                     monster = "pictures/enemy2.png";
-                    break;
+                    break; //add the new image like these
             }
 
             if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && _player.health > 0)

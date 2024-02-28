@@ -5,6 +5,8 @@ namespace arcade
 {
     internal class Bullet : AnimationSprite
     {
+        Player _player = MyGame.main.FindObjectOfType<Player>();
+
         int speed = 3;
         int dirX;
         int dirY;
@@ -21,11 +23,18 @@ namespace arcade
         }
 
         public void Update()
-        { 
+        {
+            if (_player == null) MyGame.main.FindObjectOfType<Player>();
+
             x += speed * dirX;
             y += speed * dirY;
             SetCycle(0, 2);
             Animate(0.1f);
+
+            if (_player.health <= 0)
+            {
+                Destroy();
+            }
         }
     }
 }

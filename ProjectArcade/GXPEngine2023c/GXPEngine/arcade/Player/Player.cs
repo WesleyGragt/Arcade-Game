@@ -6,10 +6,12 @@ namespace arcade
     public class Player : AnimationSprite
     {
         Buttons _button;
+        SceneHandler _sceneHandler = MyGame.main.FindObjectOfType<SceneHandler>();
 
         public int health;
         int startHealth;
         float speed;
+        float startSpeed;
 
         public int score = 0;
         public bool addScore = false;
@@ -18,13 +20,14 @@ namespace arcade
 
         bool keyK = false;
         bool keyL = false;
-        public Player(string filename, int c, int r, TiledObject data) : base(filename, 4, 11)
+        public Player(string filename, int c, int r, TiledObject data) : base(filename, 4, 12)
         {
             x = data.X;
             y = data.Y;
             health = data.GetIntProperty("health");
             startHealth = health;
             speed = data.GetFloatProperty("speed");
+            startSpeed = speed;
         }
 
         void Update()
@@ -42,23 +45,27 @@ namespace arcade
                 if (_button.keyA && (keyK || keyL))
                 {
                     SetCycle(16, 31);
+                    speed = startSpeed;
                 }
                 if (_button.keyW && (keyK || keyL))
                 {
                     SetCycle(32, 43);
+                    speed = startSpeed;
                 }
                 if (_button.keyD && (keyK || keyL))
                 {
                     SetCycle(0, 15);
+                    speed = startSpeed;
                 }
             }
             if (currentFrame == 14 || currentFrame == 30 || currentFrame == 42)
             {
-                SetCycle(0);
+                SetCycle(44, 45);
+                speed = 0.1f;
             }
             Animate(speed);
 
-            if (addScore && health > 0)
+            if (addScore)
             {
                 if (perfectScore)
                 {
@@ -73,10 +80,9 @@ namespace arcade
                 addScore = false;
             }
 
-            if (health <= 0 && Input.GetKey(Key.B))
+            if (health <= 0)
             {
-                health = startHealth;
-                score = 0;
+                _sceneHandler.endGame();
             }
         }
 
