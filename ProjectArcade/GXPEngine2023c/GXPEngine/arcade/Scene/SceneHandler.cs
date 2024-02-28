@@ -35,6 +35,7 @@ namespace arcade
             if (Input.GetKeyDown(Key.A) && !hasGameStarted)
             {
                 //DestroyAll();
+
                 startGame();
                 hasGameStarted = true;
             }

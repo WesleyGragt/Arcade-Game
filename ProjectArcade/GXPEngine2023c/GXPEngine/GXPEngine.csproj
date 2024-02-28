@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="arcade\Player\Controller.cs" />
     <Compile Include="arcade\Scene\ending.cs" />
     <Compile Include="arcade\scoreBoard.cs" />
     <Compile Include="arcade\Enemy\Bullet.cs" />

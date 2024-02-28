@@ -5,22 +5,22 @@ namespace arcade
 {
     public class Level : GameObject
     {
-        public static string level = "testing.tmx";
+        string level = "testing.tmx";
         public Level()
         {
-            TiledLoader loader = new TiledLoader(level);
+            Pivot levelHolder = new Pivot();
+            AddChild(levelHolder);
+            
+            TiledLoader loader = new TiledLoader(level, levelHolder);
             loader.LoadTileLayers();
             loader.autoInstance = true;
             loader.LoadObjectGroups();
 
-            scoreBoard _scoring = new scoreBoard();
-            AddChild(_scoring);
-
             EnemyHandler enemyHandler = new EnemyHandler();
             AddChild(enemyHandler);
 
-            /*scoreBoard _scoring = new scoreBoard();
-            AddChild(_scoring);*/
+            scoreBoard _scoring = new scoreBoard();
+            AddChild(_scoring);
         }
     }
 }
