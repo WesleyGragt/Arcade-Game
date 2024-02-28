@@ -5,12 +5,9 @@ using arcade;
 public class MyGame : Game {
     public MyGame() : base(1334, 768, false)     // Create a window that's 800x600 and NOT fullscreen
 	{
-        Level level = new Level();
-		Conductor conductor = new Conductor();
-
-        AddChild(level);
-		AddChild(conductor);
-
+		SceneHandler sceneHandler = new SceneHandler();	
+		AddChild(sceneHandler);
+       
         Console.WriteLine("My game initialized");
 	}
 

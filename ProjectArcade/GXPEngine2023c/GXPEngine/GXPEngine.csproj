@@ -49,7 +49,10 @@
     <Compile Include="arcade\Enemy\Enemy.cs" />
     <Compile Include="arcade\Player\Smoke.cs" />
     <Compile Include="arcade\Player\Player.cs" />
-    <Compile Include="arcade\Level.cs" />
+    <Compile Include="arcade\Scene\EndScreen.cs" />
+    <Compile Include="arcade\Scene\Level.cs" />
+    <Compile Include="arcade\Scene\SceneHandler.cs" />
+    <Compile Include="arcade\Scene\StartScreen.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />
     <Compile Include="GXPEngine\AddOns\TiledLoader.cs" />
