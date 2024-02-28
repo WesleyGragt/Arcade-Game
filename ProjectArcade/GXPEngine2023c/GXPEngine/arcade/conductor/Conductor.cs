@@ -4,12 +4,16 @@ namespace arcade
 {
     public class Conductor : GameObject
     {
+        Player _player = MyGame.main.FindObjectOfType<Player>();
+
         //music/Crystalline.mp3
         //music/drums.wav
         public Conductor()
         {
             SoundChannel song = new Sound("music/drums.wav", true, false).Play();
         }
+
+
 
         public float bpm = 70;
         public float crotchet;
@@ -23,6 +27,13 @@ namespace arcade
 
         public void Update()
         {
+            if (_player == null) MyGame.main.FindObjectOfType<Player>();
+
+            if (_player.health <= 0)
+            {
+                //song.Stop();
+            }
+
             if (start == 0)
             {
                 lastbeat = 0f;

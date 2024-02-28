@@ -9,6 +9,7 @@ namespace arcade
     public class Enemy : AnimationSprite
     {
         List<Bullet> _bullets = new List<Bullet>();
+        Player _player = MyGame.main.FindObjectOfType<Player>();
         Conductor _conductor = MyGame.main.FindObjectOfType<Conductor>();
         EnemyHandler _handler = MyGame.main.FindObjectOfType<EnemyHandler>();
 
@@ -37,14 +38,9 @@ namespace arcade
 
         void Update()
         {
-            if (_conductor == null)
-            {
-                _conductor = MyGame.main.FindObjectOfType<Conductor>();
-            }
-            if (_handler == null)
-            {
-                _handler = MyGame.main.FindObjectOfType<EnemyHandler>();
-            }
+            if (_conductor == null) _conductor = MyGame.main.FindObjectOfType<Conductor>();
+            if (_handler == null) _handler = MyGame.main.FindObjectOfType<EnemyHandler>();
+            if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
 
             switch (randomNumb)
             {
@@ -56,7 +52,7 @@ namespace arcade
                     break;
             }
 
-            if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet)
+            if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && _player.health > 0)
             {
                 if (_handler.randomNumb == 1 && side == 1)
                 {
@@ -83,7 +79,7 @@ namespace arcade
                     randomNumb = Utils.Random(1, monsterCount + 1);
                     _handler.randomNumb = Utils.Random(1, 4);
                 }
-            }
+            } else if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && _player.health <= 0) _conductor.lastbeat += _conductor.crotchet * spawner;
         }
     }
 }

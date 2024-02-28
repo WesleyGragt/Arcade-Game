@@ -1,5 +1,4 @@
 ﻿using GXPEngine;
-using System;
 using TiledMapParser;
 
 namespace arcade
@@ -78,35 +77,72 @@ namespace arcade
         {
             if (other is Bullet)
             {
-                if (keyA && Input.GetKeyDown(Key.K))
+                if (Input.GetKeyDown(Key.K) && other.name == "pictures/enemy1.png")
                 {
-                    if (x < other.x && x + 8 > other.x)
+                    if (keyA && side == 1)
                     {
-                        _player.perfectScore = true;
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
                     }
-                    else _player.normalScore = true;
-                    _player.addScore = true;
-                    other.LateDestroy();
+                    if (keyW && side == 2)
+                    {
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
+                    }
+                    if (keyD && side == 3)
+                    {
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
+                    }
                 }
-                if (keyW && Input.GetKeyDown(Key.K))
+
+                if (Input.GetKeyDown(Key.L) && other.name == "pictures/enemy2.png")
                 {
-                    if (y - 8 < other.y && y > other.y)
+                    if (keyA && side == 1)
                     {
-                        _player.perfectScore = true;
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
                     }
-                    else _player.normalScore = true;
-                    _player.addScore = true;
-                    other.LateDestroy();
-                }
-                if (keyD && Input.GetKeyDown(Key.K))
-                {
-                    if (x < other.x && x + 8 > other.x)
+                    if (keyW && side == 2)
                     {
-                        _player.perfectScore = true;
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
                     }
-                    else _player.normalScore = true;
-                    _player.addScore = true;
-                    other.LateDestroy();
+                    if (keyD && side == 3)
+                    {
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
+                    }
                 }
             }
         }

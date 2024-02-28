@@ -5,9 +5,6 @@ namespace arcade
 {
     internal class Bullet : AnimationSprite
     {
-        Player _player;
-        Buttons _buttons;
-
         int speed = 3;
         int dirX;
         int dirY;
@@ -21,8 +18,6 @@ namespace arcade
             dirY = directY;
             x = pX;
             y = pY;
-            _player = MyGame.main.FindObjectOfType<Player>();
-            _buttons = MyGame.main.FindObjectOfType<Buttons>();
         }
 
         public void Update()
