@@ -15349,6 +15349,10 @@
   <tile id="15343"/>
   <tile id="15344"/>
  </tileset>
+ <tileset firstgid="15346" name="endscreen" tilewidth="1334" tileheight="768" tilecount="16320" columns="4">
+  <grid orientation="orthogonal" width="32" height="32"/>
+  <image source="pictures/endscreen.png" width="5464" height="3072"/>
+ </tileset>
  <objectgroup id="2" name="Object Layer 1">
   <object id="5" type="arcade.ending" gid="1" x="0" y="768" width="1344" height="768"/>
  </objectgroup>
