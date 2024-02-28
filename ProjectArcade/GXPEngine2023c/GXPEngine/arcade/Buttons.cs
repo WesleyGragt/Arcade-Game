@@ -1,10 +1,13 @@
 ﻿using GXPEngine;
+using System;
 using TiledMapParser;
 
 namespace arcade
 {
     public class Buttons : AnimationSprite
     {
+        Player _player = MyGame.main.FindObjectOfType<Player>();
+
         public int side;
         public bool keyA = false;
         public bool keyW = false;
@@ -16,6 +19,8 @@ namespace arcade
 
         void Update()
         {
+            if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
+
             if (Input.GetKey(Key.A) && !keyW && !keyD)
             {
                 keyA = true;
@@ -66,6 +71,43 @@ namespace arcade
             else if (!keyD && side == 3)
             {
                 SetCycle(0);
+            }
+        }
+
+        void OnCollision(GameObject other)
+        {
+            if (other is Bullet)
+            {
+                if (keyA && Input.GetKeyDown(Key.K))
+                {
+                    if (x < other.x && x + 8 > other.x)
+                    {
+                        _player.perfectScore = true;
+                    }
+                    else _player.normalScore = true;
+                    _player.addScore = true;
+                    other.LateDestroy();
+                }
+                if (keyW && Input.GetKeyDown(Key.K))
+                {
+                    if (y - 8 < other.y && y > other.y)
+                    {
+                        _player.perfectScore = true;
+                    }
+                    else _player.normalScore = true;
+                    _player.addScore = true;
+                    other.LateDestroy();
+                }
+                if (keyD && Input.GetKeyDown(Key.K))
+                {
+                    if (x < other.x && x + 8 > other.x)
+                    {
+                        _player.perfectScore = true;
+                    }
+                    else _player.normalScore = true;
+                    _player.addScore = true;
+                    other.LateDestroy();
+                }
             }
         }
     }

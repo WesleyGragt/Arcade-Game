@@ -7,9 +7,11 @@ public class MyGame : Game {
 	{
         Level level = new Level();
 		Conductor conductor = new Conductor();
+        VFX vfx = new VFX();
 
         AddChild(level);
 		AddChild(conductor);
+		AddChild(vfx);
 
         Console.WriteLine("My game initialized");
 	}
