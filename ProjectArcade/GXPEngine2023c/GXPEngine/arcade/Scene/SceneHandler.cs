@@ -13,7 +13,7 @@ namespace arcade
         StartScreen sScreen;
         Level level = MyGame.main.FindObjectOfType<Level>();
         Conductor conductor = MyGame.main.FindObjectOfType<Conductor>();
-        EndScreen eScreen;
+        //EndScreen eScreen;
 
         public SceneHandler()
         {

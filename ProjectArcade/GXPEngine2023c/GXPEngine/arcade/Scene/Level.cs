@@ -13,11 +13,14 @@ namespace arcade
             loader.autoInstance = true;
             loader.LoadObjectGroups();
 
+            scoreBoard _scoring = new scoreBoard();
+            AddChild(_scoring);
+
             EnemyHandler enemyHandler = new EnemyHandler();
             AddChild(enemyHandler);
 
-            scoreBoard _scoring = new scoreBoard();
-            AddChild(_scoring);
+            /*scoreBoard _scoring = new scoreBoard();
+            AddChild(_scoring);*/
         }
     }
 }

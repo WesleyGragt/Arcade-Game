@@ -25,6 +25,7 @@ namespace arcade
 
         void Update()
         {
+            Console.WriteLine("hey");
             if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
 
             canvas.ClearTransparent();
