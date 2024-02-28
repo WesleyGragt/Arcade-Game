@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="76">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="82">
  <tileset firstgid="1" name="circle" tilewidth="64" tileheight="64" tilecount="2" columns="2">
   <image source="pictures/circle.png" width="128" height="64"/>
  </tileset>
@@ -9,13 +9,7 @@
  <tileset firstgid="7" name="background" tilewidth="32" tileheight="32" tilecount="1008" columns="42">
   <image source="pictures/background.jpeg" width="1366" height="768"/>
  </tileset>
- <tileset firstgid="1015" name="hearts" tilewidth="640" tileheight="64" tilecount="11" columns="1">
-  <image source="pictures/hearts.png" width="640" height="704"/>
- </tileset>
- <tileset firstgid="1026" name="enemy1" tilewidth="200" tileheight="200" tilecount="2" columns="2">
-  <image source="pictures/enemy1.png" width="400" height="200"/>
- </tileset>
- <tileset firstgid="1028" name="mc" tilewidth="300" tileheight="300" tilecount="44" columns="4">
+ <tileset firstgid="1015" name="mc" tilewidth="300" tileheight="300" tilecount="44" columns="4">
   <image source="pictures/mc.png" width="1200" height="3300"/>
   <tile id="0">
    <objectgroup draworder="index" id="2">
@@ -126,11 +120,11 @@
   <tile id="42"/>
   <tile id="43"/>
  </tileset>
- <tileset firstgid="1072" name="hit" tilewidth="70" tileheight="70" tilecount="9" columns="3">
+ <tileset firstgid="1059" name="hit" tilewidth="70" tileheight="70" tilecount="9" columns="3">
   <image source="pictures/hit.png" width="210" height="210"/>
  </tileset>
- <tileset firstgid="1081" name="health" tilewidth="64" tileheight="64" tilecount="1" columns="1">
-  <image source="pictures/health.png" width="64" height="64"/>
+ <tileset firstgid="1068" name="healthbar" tilewidth="649" tileheight="63" spacing="1" tilecount="11" columns="1">
+  <image source="pictures/healthbar.png" width="649" height="704"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="42" height="24">
   <data encoding="csv">
@@ -201,29 +195,29 @@
   </object>
  </objectgroup>
  <objectgroup id="3" name="Player">
-  <object id="64" name="Player" type="arcade.Player" gid="1039" x="560" y="736.667" width="224" height="224">
+  <object id="64" name="Player" type="arcade.Player" gid="1026" x="560" y="752" width="224" height="224">
    <properties>
     <property name="health" type="int" value="10"/>
     <property name="speed" type="float" value="0.5"/>
    </properties>
   </object>
-  <object id="69" name="smoke" type="arcade.Smoke" gid="1079" x="464" y="688" width="64" height="64">
+  <object id="69" name="smoke" type="arcade.Smoke" gid="1066" x="464" y="688" width="64" height="64">
    <properties>
     <property name="side" type="int" value="1"/>
    </properties>
   </object>
-  <object id="73" name="smoke" type="arcade.Smoke" gid="1079" x="640" y="496" width="64" height="64">
+  <object id="73" name="smoke" type="arcade.Smoke" gid="1066" x="640" y="496" width="64" height="64">
    <properties>
     <property name="side" type="int" value="2"/>
    </properties>
   </object>
-  <object id="74" name="smoke" type="arcade.Smoke" gid="1079" x="816" y="688" width="64" height="64">
+  <object id="74" name="smoke" type="arcade.Smoke" gid="1066" x="816" y="688" width="64" height="64">
    <properties>
     <property name="side" type="int" value="3"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="7" name="Health">
-  <object id="75" name="Health" type="arcade.Healthbar" gid="1081" x="64" y="96" width="320" height="32"/>
+  <object id="59" name="Health" type="arcade.Healthbar" gid="1078" x="32" y="64" width="324.5" height="31.5"/>
  </objectgroup>
 </map>

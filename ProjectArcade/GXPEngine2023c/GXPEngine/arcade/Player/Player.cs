@@ -9,6 +9,11 @@ namespace arcade
         Buttons _button;
         public int health;
         float speed;
+
+        public int score = 0;
+        public bool addScore = false;
+        public bool perfectScore = false;
+        public bool normalScore = false;
         public Player(string filename, int c, int r, TiledObject data) : base(filename, 4, 11)
         {
             x = data.X;
@@ -40,6 +45,30 @@ namespace arcade
                 SetCycle(0);
             }
             Animate(speed);
+
+            if (addScore)
+            {
+                if (perfectScore)
+                {
+                    score += 100;
+                    perfectScore = false;
+                }
+                else if (normalScore)
+                {
+                    score += 50;
+                    normalScore = false;
+                }
+                addScore = false;
+            }
+        }
+
+        void OnCollision(GameObject other)
+        {
+            if (other is Bullet)
+            {
+                health--;
+                other.LateDestroy();
+            }
         }
     }
 }

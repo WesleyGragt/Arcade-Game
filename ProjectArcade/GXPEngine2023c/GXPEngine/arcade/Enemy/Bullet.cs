@@ -32,32 +32,5 @@ namespace arcade
             SetCycle(0, 2);
             Animate(0.1f);
         }
-        void OnCollision(GameObject other)
-        {
-            if (other is Player)
-            {
-                if (_player != null)
-                {
-                    _player.health--;
-                }
-                LateDestroy();
-            }
-
-            if (other is Buttons)
-            {
-                if (_buttons.keyA && Input.GetKeyDown(Key.K) && dirX == 1)
-                {
-                    LateDestroy();
-                }
-                if (_buttons.keyW && Input.GetKeyDown(Key.K) && dirX == 0)
-                {
-                    LateDestroy();
-                }
-                if (_buttons.keyD && Input.GetKeyDown(Key.K) && dirX == -1)
-                {
-                    LateDestroy();
-                }
-            }
-        }
     }
 }
