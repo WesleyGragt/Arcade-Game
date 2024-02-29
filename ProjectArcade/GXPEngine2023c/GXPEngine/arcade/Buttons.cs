@@ -75,7 +75,7 @@ namespace arcade
 
         void OnCollision(GameObject other)
         {
-            if (other is Enemy)
+            if (other is Bullet)
             {
                 if (Input.GetKeyDown(Key.K) && other.name == "pictures/enemy1.png")
                 {
