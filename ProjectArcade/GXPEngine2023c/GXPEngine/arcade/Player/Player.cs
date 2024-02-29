@@ -35,19 +35,12 @@ namespace arcade
 
         void Update()
         {
-<<<<<<< Updated upstream
+            if (_button == null) _button = MyGame.main.FindObjectOfType<Buttons>();
+            if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
+
             keyK = Input.GetKeyDown(Key.K);
             keyL = Input.GetKeyDown(Key.L);
             KeyJ = Input.GetKeyDown(Key.J);
-
-            if (_button == null)
-            {
-                _button = MyGame.main.FindObjectOfType<Buttons>();
-            }
-=======
-            if (_button == null) _button = MyGame.main.FindObjectOfType<Buttons>();
-            if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
->>>>>>> Stashed changes
 
             if (health > 0)
             {

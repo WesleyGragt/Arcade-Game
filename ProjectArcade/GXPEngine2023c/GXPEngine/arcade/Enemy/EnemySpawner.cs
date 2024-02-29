@@ -49,7 +49,7 @@ namespace arcade
                     break;
                 case 2:
                     monster = "pictures/enemy2.png";
-                    break; //add the new image like these
+                    break;
                 case 3:
                     monster = "pictures/enemy3.png";
                     break;
