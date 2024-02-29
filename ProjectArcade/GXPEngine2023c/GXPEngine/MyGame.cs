@@ -20,7 +20,7 @@ public class MyGame : Game {
 	// For every game object, Update is called every frame, by the engine:
 	void Update()
 	{
-        Console.WriteLine(currentFps);
+
     }
 
     static void Main()                          // Main() is the first method that's called when the program is run

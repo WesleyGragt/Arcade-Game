@@ -1,4 +1,5 @@
-﻿using GXPEngine;
+﻿using System;
+using GXPEngine;
 using TiledMapParser;
 
 namespace arcade
@@ -13,9 +14,9 @@ namespace arcade
         public bool keyW = false;
         public bool keyD = false;
 
-        bool attack1;
-        bool attack2;
-        bool attack3;
+        bool attack1 = false;
+        bool attack2 = false;
+        bool attack3 = false;
         public Buttons(string filename, int c, int r, TiledObject data) : base(filename, 2, 1, -1, false, true)
         {
             side = data.GetIntProperty("side");
@@ -26,18 +27,24 @@ namespace arcade
             if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
             if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
 
-            if (_controller.B1 == 1)
+            if (_controller != null)
             {
-                attack1 = true;
-            } else attack1 = false;
-            if (_controller.B2 == 1)
-            {
-                attack2 = true;
-            } else attack2 = false;
-            if (_controller.B3 == 1)
-            {
-                attack3 = true;
-            } attack3 = false;
+                Console.WriteLine(_controller.B1);
+                if (_controller.B1 == 1)
+                {
+                    attack1 = true;
+                }
+                else attack1 = false;
+                if (_controller.B2 == 1)
+                {
+                    attack2 = true;
+                }
+                else attack2 = false;
+                if (_controller.B3 == 1)
+                {
+                    attack3 = true;
+                } else attack3 = false;
+            }
 
             if (Input.GetKey(Key.A) && !keyW && !keyD)
             {
@@ -166,7 +173,7 @@ namespace arcade
 
                 }
 
-                if (Input.GetKeyDown(Key.J) && other.name == "pictures/enemy3.png")
+                if (attack3 && other.name == "pictures/enemy3.png")
                 {
                     if (keyA && side == 1)
                     {
