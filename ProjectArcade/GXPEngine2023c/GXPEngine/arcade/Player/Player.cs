@@ -97,7 +97,7 @@ namespace arcade
 
         void OnCollision(GameObject other)
         {
-            if (other is Bullet)
+            if (other is Enemy)
             {
                 health--;
                 other.LateDestroy();
