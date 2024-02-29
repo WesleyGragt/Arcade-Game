@@ -11,7 +11,7 @@ namespace arcade
             Pivot levelHolder = new Pivot();
             AddChild(levelHolder);
             
-            TiledLoader loader = new TiledLoader(level, levelHolder);
+            TiledLoader loader = new TiledLoader(level, levelHolder,false);
             loader.LoadTileLayers();
             loader.autoInstance = true;
             loader.LoadObjectGroups();

@@ -63,25 +63,7 @@ namespace arcade
             if (_conductor == null) setup();
             if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && _player.health > 0)
             {
-                if (_handler.randomNumb == 1 && side == 1)
-                {
-                    _conductor.lastbeat += _conductor.crotchet * spawner;
-                    var b = new Bullet(x, y, dirX, dirY, monster);
-                    parent.AddChild(b);
-                    _bullets.Add(b);
-                    randomNumb = Utils.Random(1, monsterCount + 1);
-                    _handler.randomNumb = Utils.Random(1, 4);
-                }
-                else if (_handler.randomNumb == 2 && side == 2)
-                {
-                    _conductor.lastbeat += _conductor.crotchet * spawner;
-                    var b = new Bullet(x, y, dirX, dirY, monster);
-                    parent.AddChild(b);
-                    _bullets.Add(b);
-                    randomNumb = Utils.Random(1, monsterCount + 1);
-                    _handler.randomNumb = Utils.Random(1, 4);
-                }
-                else if (_handler.randomNumb == 3 && side == 3)
+                if (_handler.randomNumb == 1 && side == 1 || _handler.randomNumb == 2 && side == 2 || _handler.randomNumb == 3 && side == 3)
                 {
                     _conductor.lastbeat += _conductor.crotchet * spawner;
                     var b = new Bullet(x, y, dirX, dirY, monster);
