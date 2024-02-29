@@ -1,4 +1,5 @@
-﻿using GXPEngine;
+﻿using System;
+using GXPEngine;
 using TiledMapParser;
 
 namespace arcade
@@ -7,6 +8,7 @@ namespace arcade
     {
         Buttons _button;
         SceneHandler _sceneHandler = MyGame.main.FindObjectOfType<SceneHandler>();
+        Controller _controller = MyGame.main.FindObjectOfType<Controller>();
 
         public int health;
         int startHealth;
@@ -33,6 +35,7 @@ namespace arcade
 
         void Update()
         {
+<<<<<<< Updated upstream
             keyK = Input.GetKeyDown(Key.K);
             keyL = Input.GetKeyDown(Key.L);
             KeyJ = Input.GetKeyDown(Key.J);
@@ -41,6 +44,10 @@ namespace arcade
             {
                 _button = MyGame.main.FindObjectOfType<Buttons>();
             }
+=======
+            if (_button == null) _button = MyGame.main.FindObjectOfType<Buttons>();
+            if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
+>>>>>>> Stashed changes
 
             if (health > 0)
             {

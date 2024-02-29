@@ -41,11 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="arcade\Player\Controller.cs" />
+    <Compile Include="arcade\Controller.cs" />
     <Compile Include="arcade\Scene\ending.cs" />
+<<<<<<< Updated upstream
     <Compile Include="arcade\scoreBoard.cs" />
     <Compile Include="arcade\Enemy\Enemy.cs" />
     <Compile Include="arcade\Buttons.cs" />
+=======
+    <Compile Include="arcade\Scene\scoreBoard.cs" />
+    <Compile Include="arcade\Enemy\Bullet.cs" />
+    <Compile Include="arcade\Player\Buttons.cs" />
+>>>>>>> Stashed changes
     <Compile Include="arcade\Enemy\EnemyHandler.cs" />
     <Compile Include="arcade\conductor\Conductor.cs" />
     <Compile Include="arcade\Player\Healthbar.cs" />
