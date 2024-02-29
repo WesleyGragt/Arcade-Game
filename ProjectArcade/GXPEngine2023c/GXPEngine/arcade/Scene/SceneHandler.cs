@@ -32,25 +32,13 @@ namespace arcade
                 Console.WriteLine("screen added");
                 startScreen = true; // Set startScreen to true to prevent recreating the screen
             }
-            if (Input.GetKeyDown(Key.A) && !hasGameStarted)
+            if (Input.GetKeyUp(Key.A) && !hasGameStarted)
             {
                 //DestroyAll();
 
                 startGame();
                 hasGameStarted = true;
             }
-            /*if (Input.GetKeyDown(Key.L))
-            {
-                hasGameEnded = true;
-                hasGameStarted = false;
-                Console.WriteLine("pressed l");
-            }
-            if (hasGameEnded)
-            {
-                endGame();
-                hasGameEnded = false;
-                Console.WriteLine("ga")
-            }*/
         }
 
         void startGame()
@@ -80,16 +68,5 @@ namespace arcade
             EndScreen eScreen = new EndScreen();
             AddChild(eScreen);
         }
-
-        /*void DestroyAll()
-        {
-            List<GameObject> children= new List<GameObject>();
-            children = game.GetChildren();
-            foreach ( GameObject child in children )
-            {
-                Console.WriteLine(child);
-                child.Destroy();
-            }
-        }*/
     }
 }

@@ -75,7 +75,7 @@ namespace arcade
 
         void OnCollision(GameObject other)
         {
-            if (other is Bullet)
+            if (other is Enemy)
             {
                 if (Input.GetKeyDown(Key.K) && other.name == "pictures/enemy1.png")
                 {
@@ -143,6 +143,44 @@ namespace arcade
                         _player.addScore = true;
                         other.LateDestroy();
                     }
+
+
+                }
+
+                if (Input.GetKeyDown(Key.J) && other.name == "pictures/enemy3.png")
+                {
+                    if (keyA && side == 1)
+                    {
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
+                    }
+                    if (keyW && side == 2)
+                    {
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
+                    }
+                    if (keyD && side == 3)
+                    {
+                        if (x < other.x && x + 8 > other.x)
+                        {
+                            _player.perfectScore = true;
+                        }
+                        else _player.normalScore = true;
+                        _player.addScore = true;
+                        other.LateDestroy();
+                    }
+
+
                 }
             }
         }

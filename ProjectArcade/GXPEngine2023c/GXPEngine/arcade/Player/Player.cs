@@ -20,6 +20,7 @@ namespace arcade
 
         bool keyK = false;
         bool keyL = false;
+        bool KeyJ = false;
         public Player(string filename, int c, int r, TiledObject data) : base(filename, 4, 12)
         {
             x = data.X;
@@ -34,6 +35,7 @@ namespace arcade
         {
             keyK = Input.GetKeyDown(Key.K);
             keyL = Input.GetKeyDown(Key.L);
+            KeyJ = Input.GetKeyDown(Key.J);
 
             if (_button == null)
             {
@@ -42,17 +44,17 @@ namespace arcade
 
             if (health > 0)
             {
-                if (_button.keyA && (keyK || keyL))
+                if (_button.keyA && (keyK || keyL || KeyJ))
                 {
                     SetCycle(16, 31);
                     speed = startSpeed;
                 }
-                if (_button.keyW && (keyK || keyL))
+                if (_button.keyW && (keyK || keyL || KeyJ))
                 {
                     SetCycle(32, 43);
                     speed = startSpeed;
                 }
-                if (_button.keyD && (keyK || keyL))
+                if (_button.keyD && (keyK || keyL || KeyJ))
                 {
                     SetCycle(0, 15);
                     speed = startSpeed;
@@ -88,7 +90,7 @@ namespace arcade
 
         void OnCollision(GameObject other)
         {
-            if (other is Bullet)
+            if (other is Enemy)
             {
                 health--;
                 other.LateDestroy();

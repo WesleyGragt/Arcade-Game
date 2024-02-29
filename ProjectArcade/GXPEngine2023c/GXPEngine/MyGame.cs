@@ -5,21 +5,25 @@ using System.IO.Ports;
 using System.Security.Cryptography.X509Certificates;
 
 public class MyGame : Game {
-    public MyGame() : base(1334, 768, false)     // Create a window that's 800x600 and NOT fullscreen
+    public MyGame() : base(1334, 768, false, true)     // Create a window that's 800x600 and NOT fullscreen
 	{
-		Controller controller = new Controller();
-		AddChild(controller);
+        //Controller controller = new Controller();
+        //AddChild(controller);
+
+        targetFps = 100;
 
 		SceneHandler sceneHandler = new SceneHandler();	
 		AddChild(sceneHandler);
        
         Console.WriteLine("My game initialized");
-	}
+        Console.WriteLine(targetFps);
+
+    }
 
 	// For every game object, Update is called every frame, by the engine:
 	void Update()
 	{
-
+        Console.WriteLine(currentFps);
     }
 
 	static void Main()                          // Main() is the first method that's called when the program is run
@@ -30,7 +34,7 @@ public class MyGame : Game {
             Console.WriteLine(value[i]);
             }*/
 
-        SerialPort port = new SerialPort();
+        /*SerialPort port = new SerialPort();
         port.PortName = "COM7";
         port.BaudRate = 9600;
         port.RtsEnable = true;
@@ -51,7 +55,7 @@ public class MyGame : Game {
                 ConsoleKeyInfo key = Console.ReadKey();
                 port.Write(key.KeyChar.ToString());  // writing a string to Arduino
             }
-        }
+        }*/
 
         new MyGame().Start();                   // Create a "MyGame" and start it
 	}
