@@ -13,6 +13,7 @@ namespace arcade
         StartScreen sScreen;
         Level level = MyGame.main.FindObjectOfType<Level>();
         Conductor conductor = MyGame.main.FindObjectOfType<Conductor>();
+        Controller controller = MyGame.main.FindObjectOfType<Controller>();
         //EndScreen eScreen;
 
         public SceneHandler()
@@ -32,10 +33,8 @@ namespace arcade
                 Console.WriteLine("screen added");
                 startScreen = true; // Set startScreen to true to prevent recreating the screen
             }
-            if (Input.GetKeyUp(Key.A) && !hasGameStarted)
+            if ((controller.B1 == 1 || controller.B2 == 1 || controller.B3 == 1) && !hasGameStarted)
             {
-                //DestroyAll();
-
                 startGame();
                 hasGameStarted = true;
             }
@@ -53,6 +52,9 @@ namespace arcade
             // Add other game components as needed
             Conductor conductor = new Conductor();
             AddChild(conductor);
+
+            scoreBoard _scoring = new scoreBoard();
+            AddChild(_scoring);
         }
 
         public void endGame()

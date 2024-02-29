@@ -17,6 +17,11 @@ namespace arcade
         bool attack1 = false;
         bool attack2 = false;
         bool attack3 = false;
+
+        int center = 0;
+        bool dir1;
+        bool dir2;
+        bool dir3;
         public Buttons(string filename, int c, int r, TiledObject data) : base(filename, 2, 1, -1, false, true)
         {
             side = data.GetIntProperty("side");
@@ -27,49 +32,61 @@ namespace arcade
             if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
             if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
 
-            if (_controller != null)
+            if (_controller.B1 == 1)
             {
-                Console.WriteLine(_controller.B1);
-                if (_controller.B1 == 1)
-                {
-                    attack1 = true;
-                }
-                else attack1 = false;
-                if (_controller.B2 == 1)
-                {
-                    attack2 = true;
-                }
-                else attack2 = false;
-                if (_controller.B3 == 1)
-                {
-                    attack3 = true;
-                } else attack3 = false;
+                attack1 = true;
+            }
+            else attack1 = false;
+            if (_controller.B2 == 1)
+            {
+                attack2 = true;
+            }
+            else attack2 = false;
+            if (_controller.B3 == 1)
+            {
+                attack3 = true;
+            } else attack3 = false;
+
+            if (_controller.DiskRotation > center - 15 && _controller.DiskRotation < center - 5)
+            {
+                dir1 = true;
+            }
+            else dir1 = false;
+            if (_controller.DiskRotation > center - 5 && _controller.DiskRotation < center + 5)
+            {
+                dir2 = true;
+            }
+            else dir2 = false;
+            if (_controller.DiskRotation > center + 5 && _controller.DiskRotation < center + 15)
+            {
+                dir3 = true;
+            }
+            else dir3 = false;
+
+            if (_controller.DiskRotation < center - 25)
+            {
+                center = center - 25;
+            }
+            else if (_controller.DiskRotation > center + 25)
+            {
+                center = center + 25;
             }
 
-            if (Input.GetKey(Key.A) && !keyW && !keyD)
+            if (dir1)
             {
                 keyA = true;
-            }
-            else if (Input.GetKey(Key.A) == false)
-            {
-                keyA = false;
-            }
-            if (Input.GetKey(Key.W) && !keyA && !keyD)
+            } 
+            else keyA = false;
+            if (dir2)
             {
                 keyW = true;
-            }
-            else if (Input.GetKey(Key.W) == false)
-            {
-                keyW = false;
-            }
-            if (Input.GetKey(Key.D) && !keyA && !keyW)
+            } 
+            else keyW = false;
+            if (dir3)
             {
                 keyD = true;
             }
-            else if (Input.GetKey(Key.D) == false)
-            {
-                keyD = false;
-            }
+            else keyD = false;
 
             if (keyA && !keyW && !keyD && side == 1)
             {

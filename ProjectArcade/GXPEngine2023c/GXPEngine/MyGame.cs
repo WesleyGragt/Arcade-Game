@@ -6,8 +6,8 @@ using System.IO.Ports;
 public class MyGame : Game {
     public MyGame() : base(1334, 768, false, true)     // Create a window that's 800x600 and NOT fullscreen
 	{
-        //Controller controller = new Controller();
-        //AddChild(controller);
+        Controller controller = new Controller();
+        AddChild(controller);
 
         targetFps = 100;
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="7">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="9">
  <tileset firstgid="1" name="endscreen" tilewidth="1344" tileheight="768" spacing="1" tilecount="15345" columns="4">
   <grid orientation="orthogonal" width="32" height="32"/>
   <image source="pictures/endscreen.png" width="5464" height="3072"/>
@@ -15349,11 +15349,17 @@
   <tile id="15343"/>
   <tile id="15344"/>
  </tileset>
- <tileset firstgid="15346" name="endscreen" tilewidth="1334" tileheight="768" tilecount="16320" columns="4">
+ <tileset firstgid="15346" name="endscreen" tilewidth="1334" tileheight="768" tilecount="16" columns="4">
   <grid orientation="orthogonal" width="32" height="32"/>
   <image source="pictures/endscreen.png" width="5464" height="3072"/>
  </tileset>
+ <tileset firstgid="15362" name="scoreboard" tilewidth="1280" tileheight="480" tilecount="1" columns="1">
+  <image source="pictures/scoreboard.png" width="1366" height="768"/>
+ </tileset>
  <objectgroup id="2" name="Object Layer 1">
   <object id="5" type="arcade.ending" gid="1" x="0" y="768" width="1344" height="768"/>
+ </objectgroup>
+ <objectgroup id="3" name="Object Layer 2">
+  <object id="8" gid="15362" x="28.6667" y="731.333" width="421.333" height="158"/>
  </objectgroup>
 </map>

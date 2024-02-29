@@ -6,7 +6,7 @@ namespace arcade
 {
     internal class Controller : GameObject
     {
-        
+
         SerialPort port = new SerialPort();
         char[] seperators = new char[] { ',', '\r', '\n' };
         string[] inputs;
@@ -18,7 +18,7 @@ namespace arcade
 
         public static Controller main;
 
-        public Controller() 
+        public Controller()
         {
             string[] value = SerialPort.GetPortNames();       //For checking which port the arduino is in.
             main = this;
