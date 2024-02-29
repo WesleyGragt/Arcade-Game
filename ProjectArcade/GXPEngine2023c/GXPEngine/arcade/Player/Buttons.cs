@@ -94,7 +94,7 @@ namespace arcade
 
         void OnCollision(GameObject other)
         {
-            if (other is Bullet)
+            if (other is Enemy)
             {
                 if (attack1 && other.name == "pictures/enemy1.png")
                 {
