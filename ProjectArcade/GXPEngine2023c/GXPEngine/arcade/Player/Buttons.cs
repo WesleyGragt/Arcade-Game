@@ -9,6 +9,7 @@ namespace arcade
     {
         Player _player = MyGame.main.FindObjectOfType<Player>();
         Controller _controller = MyGame.main.FindObjectOfType<Controller>();
+        showScore _showScore = MyGame.main.FindObjectOfType<showScore>();
 
         public int side;
         public bool keyA = false;
@@ -36,6 +37,7 @@ namespace arcade
         {
             if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
             if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
+            if (_showScore == null) _showScore = MyGame.main.FindObjectOfType<showScore>();
 
             if (_controller.B1 == 1 && !attack2 && !attack3 && !hasAttacked1)
             {
@@ -64,29 +66,29 @@ namespace arcade
                 hasAttacked3 = false;
             }
 
-            if (_controller.DiskRotation >= center - 15 && _controller.DiskRotation <= center - 5)
+            if (_controller.DiskRotation >= center - 5 && _controller.DiskRotation <= center - 2)
             {
                 dir1 = true;
             }
             else dir1 = false;
-            if (_controller.DiskRotation > center - 5 && _controller.DiskRotation <= center + 5)
+            if (_controller.DiskRotation > center - 2 && _controller.DiskRotation <= center + 2)
             {
                 dir2 = true;
             }
             else dir2 = false;
-            if (_controller.DiskRotation > center + 5 && _controller.DiskRotation <= center + 15)
+            if (_controller.DiskRotation > center + 2 && _controller.DiskRotation <= center + 5)
             {
                 dir3 = true;
             }
             else dir3 = false;
 
-            if (_controller.DiskRotation < center - 25)
+            if (_controller.DiskRotation < center - 5)
             {
-                center = center - 25;
+                center = center - 5;
             }
-            else if (_controller.DiskRotation > center + 25)
+            else if (_controller.DiskRotation > center + 5)
             {
-                center = center + 25;
+                center = center + 5;
             }
 
             if (dir1)
@@ -144,8 +146,13 @@ namespace arcade
                         if (x < other.x && x + 8 > other.x)
                         {
                             _player.perfectScore = true;
+                            _showScore.perfAnim = true;
                         }
-                        else _player.normalScore = true;
+                        else
+                        {
+                            _player.normalScore = true;
+                            _showScore.normAnim = true;
+                        }
                         _player.addScore = true;
                         other.LateDestroy();
                         hasAttacked1 = true;
