@@ -5,17 +5,14 @@ namespace arcade
     public class Conductor : GameObject
     {
         Player _player = MyGame.main.FindObjectOfType<Player>();
-
-        //music/Crystalline.mp3
-        //music/drums.wav
         public Conductor()
         {
             
         }
 
-        SoundChannel song = new Sound("music/drums.wav", true, false).Play();
+        SoundChannel song = new Sound("music/level.wav", true, false).Play();
 
-        public float bpm = 70;
+        public float bpm = 130;
         public float crotchet;
         public float songposition;
         public float offset = 0.2f;

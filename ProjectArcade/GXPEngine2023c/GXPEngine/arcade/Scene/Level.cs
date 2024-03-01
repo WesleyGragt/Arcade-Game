@@ -13,6 +13,7 @@ namespace arcade
             
             TiledLoader loader = new TiledLoader(level, levelHolder,false);
             loader.LoadTileLayers();
+            loader.addColliders = true;
             loader.autoInstance = true;
             loader.LoadObjectGroups();
 

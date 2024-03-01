@@ -24,6 +24,10 @@ namespace arcade
         bool keyL = false;
         bool KeyJ = false;
 
+        bool hasAttacked1 = false;
+        bool hasAttacked2 = false;
+        bool hasAttacked3 = false;
+
         bool attack1;
         bool attack2;
         bool attack3;
@@ -55,18 +59,33 @@ namespace arcade
             keyL = Input.GetKeyDown(Key.L);
             KeyJ = Input.GetKeyDown(Key.J);
 
-            if (_controller.B1 == 1)
+            if (_controller.B1 == 1 && !attack2 && !attack3)
             {
                 attack1 = true;
-            } else attack1 = false;
-            if (_controller.B2 == 1)
+            }
+            else if (_controller.B1 == 0)
+            {
+                attack1 = false;
+                hasAttacked1 = false;
+            }
+            if (_controller.B2 == 1 && !attack1 && !attack3)
             {
                 attack2 = true;
-            } else attack2 = false;
-            if (_controller.B3 == 1)
+            }
+            else if (_controller.B2 == 0)
+            {
+                attack2 = false;
+                hasAttacked2 = false;
+            }
+            if (_controller.B3 == 1 && !attack1 && !attack2)
             {
                 attack3 = true;
-            } else attack3 = false;
+            }
+            else if (_controller.B3 == 0)
+            {
+                attack3 = false;
+                hasAttacked3 = false;
+            }
 
             if (_controller.DiskRotation >= center-15 && _controller.DiskRotation <= center-5)
             {
@@ -93,20 +112,29 @@ namespace arcade
 
             if (health > 0)
             {
-                if ((_button.keyA || dir1) && (keyK || keyL || KeyJ || attack1 || attack2 || attack3))
+                if ((_button.keyA || dir1) && (keyK || keyL || KeyJ || attack1 || attack2 || attack3) && !hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                 {
                     SetCycle(16, 31);
                     speed = startSpeed;
+                    hasAttacked1 = true;
+                    hasAttacked2 = true;
+                    hasAttacked3 = true;
                 }
-                if ((_button.keyW || dir2) && (keyK || keyL || KeyJ || attack1 || attack2 || attack3))
+                if ((_button.keyW || dir2) && (keyK || keyL || KeyJ || attack1 || attack2 || attack3) && !hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                 {
                     SetCycle(32, 43);
                     speed = startSpeed;
+                    hasAttacked1 = true;
+                    hasAttacked2 = true;
+                    hasAttacked3 = true;
                 }
-                if ((_button.keyD || dir3) && (keyK || keyL || KeyJ || attack1 || attack2 || attack3))
+                if ((_button.keyD || dir3) && (keyK || keyL || KeyJ || attack1 || attack2 || attack3) && !hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                 {
                     SetCycle(0, 15);
                     speed = startSpeed;
+                    hasAttacked1 = true;
+                    hasAttacked2 = true;
+                    hasAttacked3 = true;
                 }
             }
             if (currentFrame == 14 || currentFrame == 30 || currentFrame == 42)

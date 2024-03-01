@@ -28,14 +28,7 @@ namespace arcade
 
             x += speed * dirX;
             y += speed * dirY;
-            if (name == "pictures/enemy3.png")
-            {
-                SetCycle(0, 3);
-            }
-            else 
-            {
-                SetCycle(0, 2);
-            }
+            SetCycle(0, 2);
             
             Animate(0.1f);
 

@@ -18,11 +18,11 @@ namespace arcade
 
         int side;
 
-        int randomNumb = Utils.Random(1, 4);
+        int randomNumb = Utils.Random(0, 4);
         string monster;
         int monsterCount = 3;
 
-        int spawner = 2000;
+        int spawner = 3000;
 
 
         public Enemy(string filename, int c, int r, TiledObject data) : base(filename, 1, 1)
@@ -42,6 +42,10 @@ namespace arcade
             if (_handler == null) _handler = MyGame.main.FindObjectOfType<EnemyHandler>();
             if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
 
+            if (randomNumb == 0)
+            {
+                randomNumb++;
+            }
             switch (randomNumb)
             {
                 case 1:
@@ -61,6 +65,11 @@ namespace arcade
         void Update()
         {
             if (_conductor == null) setup();
+            if (randomNumb == 0)
+            {
+                randomNumb++;
+            }
+
             if (_conductor.songposition > _conductor.lastbeat + _conductor.crotchet && _player.health > 0)
             {
                 if (_handler.randomNumb == 1 && side == 1 || _handler.randomNumb == 2 && side == 2 || _handler.randomNumb == 3 && side == 3)
@@ -69,7 +78,7 @@ namespace arcade
                     var b = new Bullet(x, y, dirX, dirY, monster);
                     parent.AddChild(b);
                     _bullets.Add(b);
-                    randomNumb = Utils.Random(1, monsterCount + 1);
+                    randomNumb = Utils.Random(0, monsterCount + 1);
                     _handler.randomNumb = Utils.Random(1, 4);
                 }
             }

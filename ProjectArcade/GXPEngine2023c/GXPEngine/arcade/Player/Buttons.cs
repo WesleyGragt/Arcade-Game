@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using GXPEngine;
 using TiledMapParser;
 
@@ -13,6 +14,10 @@ namespace arcade
         public bool keyA = false;
         public bool keyW = false;
         public bool keyD = false;
+
+        bool hasAttacked1 = false;
+        bool hasAttacked2 = false;
+        bool hasAttacked3 = false;
 
         bool attack1 = false;
         bool attack2 = false;
@@ -32,32 +37,44 @@ namespace arcade
             if (_player == null) _player = MyGame.main.FindObjectOfType<Player>();
             if (_controller == null) _controller = MyGame.main.FindObjectOfType<Controller>();
 
-            if (_controller.B1 == 1)
+            if (_controller.B1 == 1 && !attack2 && !attack3 && !hasAttacked1)
             {
                 attack1 = true;
             }
-            else attack1 = false;
-            if (_controller.B2 == 1)
+            else if (_controller.B1 == 0)
+            {
+                attack1 = false;
+                hasAttacked1 = false;
+            }
+            if (_controller.B2 == 1 && !attack1 && !attack3 && !hasAttacked2)
             {
                 attack2 = true;
             }
-            else attack2 = false;
-            if (_controller.B3 == 1)
+            else if (_controller.B2 == 0)
+            {
+                attack2 = false;
+                hasAttacked2 = false;
+            }
+            if (_controller.B3 == 1 && !attack1 && !attack2 && !hasAttacked3)
             {
                 attack3 = true;
-            } else attack3 = false;
+            } else if (_controller.B3 == 0)
+            {
+                attack3 = false;
+                hasAttacked3 = false;
+            }
 
-            if (_controller.DiskRotation > center - 15 && _controller.DiskRotation < center - 5)
+            if (_controller.DiskRotation >= center - 15 && _controller.DiskRotation <= center - 5)
             {
                 dir1 = true;
             }
             else dir1 = false;
-            if (_controller.DiskRotation > center - 5 && _controller.DiskRotation < center + 5)
+            if (_controller.DiskRotation > center - 5 && _controller.DiskRotation <= center + 5)
             {
                 dir2 = true;
             }
             else dir2 = false;
-            if (_controller.DiskRotation > center + 5 && _controller.DiskRotation < center + 15)
+            if (_controller.DiskRotation > center + 5 && _controller.DiskRotation <= center + 15)
             {
                 dir3 = true;
             }
@@ -120,9 +137,9 @@ namespace arcade
         {
             if (other is Bullet)
             {
-                if (attack1 && other.name == "pictures/enemy1.png")
+                if ((attack1 && other.name == "pictures/enemy1.png" || attack2 && other.name == "pictures/enemy2.png" || attack3 && other.name == "pictures/enemy3.png") && !hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                 {
-                    if (keyA && side == 1)
+                    if (keyA && side == 1 || keyW && side == 2 || keyD && side == 3)
                     {
                         if (x < other.x && x + 8 > other.x)
                         {
@@ -131,99 +148,16 @@ namespace arcade
                         else _player.normalScore = true;
                         _player.addScore = true;
                         other.LateDestroy();
+                        hasAttacked1 = true;
+                        hasAttacked2 = true;
+                        hasAttacked3 = true;
                     }
-                    if (keyW && side == 2)
+                    else if (!hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                     {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
+                        hasAttacked1 = true;
+                        hasAttacked2 = true;
+                        hasAttacked3 = true;
                     }
-                    if (keyD && side == 3)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-                }
-
-                if (attack2 && other.name == "pictures/enemy2.png")
-                {
-                    if (keyA && side == 1)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-                    if (keyW && side == 2)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-                    if (keyD && side == 3)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-
-
-                }
-
-                if (attack3 && other.name == "pictures/enemy3.png")
-                {
-                    if (keyA && side == 1)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-                    if (keyW && side == 2)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-                    if (keyD && side == 3)
-                    {
-                        if (x < other.x && x + 8 > other.x)
-                        {
-                            _player.perfectScore = true;
-                        }
-                        else _player.normalScore = true;
-                        _player.addScore = true;
-                        other.LateDestroy();
-                    }
-
-
                 }
             }
         }

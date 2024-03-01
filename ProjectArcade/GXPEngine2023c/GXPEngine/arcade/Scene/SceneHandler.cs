@@ -11,13 +11,21 @@ namespace arcade
         //bool hasGameEnded = false;
         bool startScreen = false;
         StartScreen sScreen;
+        EndScreen screenEnd = MyGame.main.FindObjectOfType<EndScreen>();
         Level level = MyGame.main.FindObjectOfType<Level>();
         Conductor conductor = MyGame.main.FindObjectOfType<Conductor>();
         Controller controller = MyGame.main.FindObjectOfType<Controller>();
+        SoundChannel start = new Sound("music/mainMenu.mp3", true, false).Play();
+        SoundChannel end;
         //EndScreen eScreen;
+
+        bool restart = false;
+
+        public static SceneHandler main;
 
         public SceneHandler()
         {
+            main = this;
             Update();
         }
 
@@ -25,6 +33,21 @@ namespace arcade
         {
             if (level == null) level = MyGame.main.FindObjectOfType<Level>();
             if (conductor == null) conductor = MyGame.main.FindObjectOfType<Conductor>();
+            if (screenEnd == null) screenEnd = MyGame.main.FindObjectOfType<EndScreen>();
+
+            /*if (screenEnd != null && (controller.B1 == 1 || controller.B2 == 1 || controller.B3 == 1) && restart)         Getting to restart the game
+            {
+                List<GameObject> children = new List<GameObject>();
+                children = SceneHandler.main.GetChildren();
+                foreach (GameObject child in children)
+                {
+                    child.Destroy();
+                }
+
+                restart = false;
+                startScreen = false;
+                hasGameStarted = false;
+            }*/
 
             if (!startScreen)
             {
@@ -35,6 +58,14 @@ namespace arcade
             }
             if ((controller.B1 == 1 || controller.B2 == 1 || controller.B3 == 1) && !hasGameStarted)
             {
+                List<GameObject> children = new List<GameObject>();
+                children = SceneHandler.main.GetChildren();
+                foreach (GameObject child in children)
+                {
+                    child.Destroy();
+                }
+
+                start.Stop();
                 startGame();
                 hasGameStarted = true;
             }
@@ -52,23 +83,23 @@ namespace arcade
             // Add other game components as needed
             Conductor conductor = new Conductor();
             AddChild(conductor);
-
-            scoreBoard _scoring = new scoreBoard();
-            AddChild(_scoring);
         }
 
         public void endGame()
         {
             List<GameObject> children = new List<GameObject>();
-            children = game.GetChildren();
+            children = SceneHandler.main.GetChildren();
             foreach (GameObject child in children)
             {
                 child.Destroy();
             }
-
+            
             // load and add the end screen
             EndScreen eScreen = new EndScreen();
+            end = new Sound("music/ending.wav", false, false).Play();
             AddChild(eScreen);
+
+            restart = true;
         }
     }
 }

@@ -15,8 +15,10 @@ namespace arcade
 
         public EndScreen()
         {
-            TiledLoader loader = new TiledLoader(end, null, false);
-            loader.LoadTileLayers();
+            Pivot levelHolder = new Pivot();
+            AddChild(levelHolder);
+
+            TiledLoader loader = new TiledLoader(end, levelHolder, false);
             loader.autoInstance = true;
             loader.LoadObjectGroups();
         }

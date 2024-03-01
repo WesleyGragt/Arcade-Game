@@ -4,7 +4,7 @@ using arcade;
 using System.IO.Ports;
 
 public class MyGame : Game {
-    public MyGame() : base(1334, 768, false, true)     // Create a window that's 800x600 and NOT fullscreen
+    public MyGame() : base(1334, 768, false, false)     // Create a window that's 800x600 and NOT fullscreen
 	{
         Controller controller = new Controller();
         AddChild(controller);
@@ -13,7 +13,10 @@ public class MyGame : Game {
 
 		SceneHandler sceneHandler = new SceneHandler();	
 		AddChild(sceneHandler);
-       
+
+        scoreBoard scoreboard = new scoreBoard();
+        AddChild(scoreboard);
+
         Console.WriteLine("My game initialized");
     }
 
