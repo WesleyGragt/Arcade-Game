@@ -15360,6 +15360,6 @@
   <object id="5" type="arcade.ending" gid="1" x="0" y="768" width="1344" height="768"/>
  </objectgroup>
  <objectgroup id="3" name="Object Layer 2">
-  <object id="8" gid="15362" x="0" y="768" width="400" height="300"/>
+  <object id="8" gid="15362" x="0" y="608" width="446" height="150"/>
  </objectgroup>
 </map>

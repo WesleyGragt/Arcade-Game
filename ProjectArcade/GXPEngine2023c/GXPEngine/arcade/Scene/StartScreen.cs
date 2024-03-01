@@ -8,9 +8,11 @@ namespace arcade
     {
         public static string start = "start.tmx";
         Controller _controller = MyGame.main.FindObjectOfType<Controller>();
+        static public StartScreen main;
 
         public StartScreen()
         {
+            main = this;
             TiledLoader loader = new TiledLoader(start, null, false);
             loader.LoadTileLayers();
             loader.autoInstance = true;

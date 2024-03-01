@@ -78,13 +78,13 @@ namespace arcade
                     {
                         playing1 = true;
                         hit = new Sound("music/hit.wav", false, false).Play();
-                    } else if (playing1 && hit.IsPlaying == false)
+                    } else if (playing1)
                     {
                         playing1 = false;
+                        hasAttacked1 = true;
+                        hasAttacked2 = true;
+                        hasAttacked3 = true;
                     }
-                    hasAttacked1 = true;
-                    hasAttacked2 = true;
-                    hasAttacked3 = true;
                 }
                 if (_button.keyW && (keyK || keyL || attack1 || attack2 || attack3) && side == 2 && !hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                 {
@@ -94,13 +94,13 @@ namespace arcade
                         playing2 = true;
                         hit = new Sound("music/hit.wav", false, false).Play();
                     }
-                    else if (playing2 && hit.IsPlaying == false)
+                    else if (playing2)
                     {
                         playing2 = false;
+                        hasAttacked1 = true;
+                        hasAttacked2 = true;
+                        hasAttacked3 = true;
                     }
-                    hasAttacked1 = true;
-                    hasAttacked2 = true;
-                    hasAttacked3 = true;
                 }
                 if (_button.keyD && (keyK || keyL || attack1 || attack2 || attack3) && side == 3 && !hasAttacked1 && !hasAttacked2 && !hasAttacked3)
                 {
@@ -110,13 +110,13 @@ namespace arcade
                         playing3 = true;
                         hit = new Sound("music/hit.wav", false, false).Play();
                     }
-                    else if (playing3 && hit.IsPlaying == false)
+                    else if (playing3)
                     {
                         playing3 = false;
+                        hasAttacked1 = true;
+                        hasAttacked2 = true;
+                        hasAttacked3 = true;
                     }
-                    hasAttacked1 = true;
-                    hasAttacked2 = true;
-                    hasAttacked3 = true;
                 }
             }
             if (currentFrame == 6)

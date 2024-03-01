@@ -1,6 +1,7 @@
 ﻿using GXPEngine;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using TiledMapParser;
 
 namespace arcade
@@ -15,11 +16,11 @@ namespace arcade
         Level level = MyGame.main.FindObjectOfType<Level>();
         Conductor conductor = MyGame.main.FindObjectOfType<Conductor>();
         Controller controller = MyGame.main.FindObjectOfType<Controller>();
-        SoundChannel start = new Sound("music/mainMenu.mp3", true, false).Play();
+        SoundChannel song = new Sound("music/mainMenu.mp3", true, false).Play();
         SoundChannel end;
         //EndScreen eScreen;
 
-        bool restart = false;
+        bool wait = false;
 
         public static SceneHandler main;
 
@@ -35,7 +36,7 @@ namespace arcade
             if (conductor == null) conductor = MyGame.main.FindObjectOfType<Conductor>();
             if (screenEnd == null) screenEnd = MyGame.main.FindObjectOfType<EndScreen>();
 
-            /*if (screenEnd != null && (controller.B1 == 1 || controller.B2 == 1 || controller.B3 == 1) && restart)         Getting to restart the game
+            if (!startScreen)
             {
                 List<GameObject> children = new List<GameObject>();
                 children = SceneHandler.main.GetChildren();
@@ -44,19 +45,13 @@ namespace arcade
                     child.Destroy();
                 }
 
-                restart = false;
-                startScreen = false;
-                hasGameStarted = false;
-            }*/
-
-            if (!startScreen)
-            {
                 sScreen = new StartScreen();
                 AddChild(sScreen);
                 Console.WriteLine("screen added");
                 startScreen = true; // Set startScreen to true to prevent recreating the screen
             }
-            if ((controller.B1 == 1 || controller.B2 == 1 || controller.B3 == 1) && !hasGameStarted)
+
+            if ((controller.B1 == 1 || controller.B2 == 1 || controller.B3 == 1) && !hasGameStarted && !wait)
             {
                 List<GameObject> children = new List<GameObject>();
                 children = SceneHandler.main.GetChildren();
@@ -65,7 +60,9 @@ namespace arcade
                     child.Destroy();
                 }
 
-                start.Stop();
+                Console.WriteLine("Hey");
+
+                song.Stop();
                 startGame();
                 hasGameStarted = true;
             }
@@ -98,8 +95,6 @@ namespace arcade
             EndScreen eScreen = new EndScreen();
             end = new Sound("music/ending.wav", false, false).Play();
             AddChild(eScreen);
-
-            restart = true;
         }
     }
 }

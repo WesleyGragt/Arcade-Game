@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="85">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="86">
  <tileset firstgid="1" name="circle" tilewidth="64" tileheight="64" tilecount="2" columns="2">
   <image source="pictures/circle.png" width="128" height="64"/>
  </tileset>
@@ -133,8 +133,8 @@
  <tileset firstgid="1079" name="scoreboard" tilewidth="1280" tileheight="480" tilecount="1" columns="1">
   <image source="pictures/scoreboard.png" width="1366" height="768"/>
  </tileset>
- <tileset firstgid="1080" name="showScore" tilewidth="250" tileheight="250" tilecount="8" columns="2">
-  <image source="pictures/showScore.png" width="500" height="1000"/>
+ <tileset firstgid="1080" name="showScore" tilewidth="250" tileheight="250" tilecount="10" columns="2">
+  <image source="pictures/showScore.png" width="500" height="1250"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="42" height="24">
   <data encoding="csv">
@@ -207,7 +207,7 @@
  <objectgroup id="3" name="Player">
   <object id="64" name="Player" type="arcade.Player" gid="1022" x="560" y="752" width="224" height="224">
    <properties>
-    <property name="health" type="int" value="1"/>
+    <property name="health" type="int" value="10"/>
     <property name="speed" type="float" value="0.5"/>
    </properties>
   </object>
@@ -226,10 +226,10 @@
     <property name="side" type="int" value="3"/>
    </properties>
   </object>
-  <object id="84" gid="1080" x="798" y="703" width="250" height="250"/>
+  <object id="84" type="arcade.showScore" gid="1080" x="803" y="518" width="150" height="150"/>
  </objectgroup>
  <objectgroup id="7" name="Health">
   <object id="59" name="Health" type="arcade.Healthbar" gid="1078" x="32" y="64" width="324.5" height="31.5"/>
-  <object id="83" name="Scoreboard" gid="1079" x="6.66667" y="342.33" width="400" height="300"/>
+  <object id="83" name="Scoreboard" gid="1079" x="32" y="224" width="446" height="150"/>
  </objectgroup>
 </map>

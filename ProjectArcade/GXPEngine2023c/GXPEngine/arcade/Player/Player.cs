@@ -11,7 +11,6 @@ namespace arcade
         Controller _controller = MyGame.main.FindObjectOfType<Controller>();
 
         public int health;
-        int startHealth;
         float speed;
         float startSpeed;
 
@@ -43,7 +42,6 @@ namespace arcade
             x = data.X;
             y = data.Y;
             health = data.GetIntProperty("health");
-            startHealth = health;
             speed = data.GetFloatProperty("speed");
             startSpeed = speed;
 
@@ -87,27 +85,27 @@ namespace arcade
                 hasAttacked3 = false;
             }
 
-            if (_controller.DiskRotation >= center-15 && _controller.DiskRotation <= center-5)
+            if (_controller.DiskRotation >= center-6 && _controller.DiskRotation <= center-2)
             {
                 dir1 = true;
             }
             else dir1 = false;
-            if (_controller.DiskRotation > center-5 && _controller.DiskRotation <= center+5)
+            if (_controller.DiskRotation > center-2 && _controller.DiskRotation <= center+2)
             {
                 dir2 = true;
             } else dir2 = false;
-            if (_controller.DiskRotation > center + 5 && _controller.DiskRotation <= center + 15)
+            if (_controller.DiskRotation > center + 2 && _controller.DiskRotation <= center + 6)
             {
                 dir3 = true;
             }
             else dir3 = false;
 
-            if (_controller.DiskRotation < center-15)
+            if (_controller.DiskRotation < center-6)
             {
-                _controller.DiskRotation = center - 15;
-            } else if (_controller.DiskRotation > center+15)
+                _controller.DiskRotation = center - 6;
+            } else if (_controller.DiskRotation > center+6)
             {
-                _controller.DiskRotation = center + 15;
+                _controller.DiskRotation = center + 6;
             }
 
             if (health > 0)
